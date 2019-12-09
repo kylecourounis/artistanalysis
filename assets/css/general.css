@@ -1,0 +1,67 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+table {
+  display: block;
+  border-collapse: collapse;
+  width: 100%;
+  font-family: Helvetica, Arial;
+  font-size: 20px;
+}
+
+th, td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  font-family: Helvetica;
+  font-size: 20px;
+}
+
+#songs {
+  display: block;
+}
+
+#video-container {
+  display: none;
+  padding: 10px;
+}
+
+#videos {
+  display: none;
+}
+
+#videos-list {
+  display: none;
+}
+
+#button-back {
+  display: none;
+  position: absolute;
+  bottom: 7px;
+  left: 9px;
+}
+
+#button-add {
+  display: block;
+  position: absolute;
+  bottom: 7px;
+  right: 9px;
+}
+
+#button-save {
+  display: none;
+  position: absolute;
+  bottom: 7px;
+  right: 9px;
+}
+
+#notes-section {
+  border-width: medium;
+  border-color: slategray
+}

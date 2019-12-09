@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title>Elton Collection</title>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="minimal-ui, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+    <script type="text/javascript" src="scripts/library/jquery.js"></script>
+    
+    <script type="text/javascript" src="scripts/helpers/html.js"></script>
+
+    <script type="text/javascript" src="scripts/index.js"></script>
+    <script type="text/javascript" src="scripts/helpers/youtube.js"></script>
+    <script type="text/javascript" src="scripts/helpers/buttons.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="assets/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
+
+    <link rel="manifest" href="assets/manifest.webmanifest">
+
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+<body>
+    <center>
+        <div class="header-container">
+            <div class="header">
+                <img id="button-back" src="assets/images/back.png" onclick="backButtonClick()" />
+                My Elton Collection
+                <img id="button-add" src="assets/images/add.png" onclick="addButtonClick()" />
+                <img id="button-save" src="assets/images/save.png" onclick="saveButtonClick()" />
+            </div>
+        </div>
+    </center>
+
+    <div id="songs">
+        <table id="all-songs" width="100%">
+        </table>
+    </div>
+
+    <div id="videos" style="display: none;">
+        <table id="videos-list" width="100%">            
+        </table>
+    </div>
+
+    <div id="video-container" style="display: none;"></div>
+</body>
+</html>
