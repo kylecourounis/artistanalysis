@@ -2,7 +2,9 @@ var song = "";
 var videoId = "";
 
 $(document).ready(function () {
-    document.getElementById("all-songs").innerHTML += localStorage.getItem("elton-songs");
+    if (localStorage.getItem("elton-songs") !== null) {
+        document.getElementById("all-songs").innerHTML += localStorage.getItem("elton-songs");
+    }
 });
 
 function onSongClick(name) {
