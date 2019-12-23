@@ -74,7 +74,9 @@ function removeVideoEvents() {
   if (videos.length > 0) {
     for (var idx in videos) {
       var item = document.getElementById(videos.item(idx).id);
-      item.removeEventListener("long-press", null);
+      if (item !== null) {
+        item.removeEventListener("long-press", null);
+      }
     }
   }
 }
