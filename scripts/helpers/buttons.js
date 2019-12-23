@@ -30,15 +30,8 @@ function addButtonClick() {
 
 function backButtonClick() {
   if (document.getElementById("videos").style.display === "block") {
-    var videos = document.getElementById("videos-list").getElementsByTagName("tr");
-
-    if (videos.length > 0) {
-      for (var idx in videos) {
-        var item = document.getElementById(videos.item(idx).id);
-        item.removeEventListener("long-press");
-      }
-    }
-
+    removeVideoEvents();
+    
     document.getElementById("videos").style.display = "none";
     document.getElementById("videos-list").style.display = "none";
     document.getElementById("button-back").style.display = "none";

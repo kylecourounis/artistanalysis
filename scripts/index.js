@@ -62,12 +62,22 @@ function addVideoEvents() {
   if (videos.length > 0) {
     for (var idx in videos) {
         var item = document.getElementById(videos.item(idx).id);
-
-        item.removeEventListener("long-press");
         addEvent(item, "elton-" + item.id);
     }
   }
 }
+
+
+function removeVideoEvents() {
+    var videos = document.getElementById("videos-list").getElementsByTagName("tr");
+  
+    if (videos.length > 0) {
+      for (var idx in videos) {
+          var item = document.getElementById(videos.item(idx).id);
+          item.removeEventListener("long-press");
+      }
+    }
+  }
 
 function addEvent(tableItem, storage) {
   tableItem.addEventListener("long-press", function (e) {
