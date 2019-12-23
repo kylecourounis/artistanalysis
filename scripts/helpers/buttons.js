@@ -66,6 +66,8 @@ function okClicked() {
   } else {
     document.getElementById(tableItem.parentElement.parentElement.id).innerHTML = localStorage.getItem(storage);
   }
+
+  closePopup();
 }
 
 function closePopup() {
