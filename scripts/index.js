@@ -62,6 +62,7 @@ function addVideoEvents() {
   if (videos.length > 0) {
     for (var idx in videos) {
       var item = document.getElementById(videos.item(idx).id);
+      console.log(item);
       addEvent(item, "elton-" + song);
     }
   }

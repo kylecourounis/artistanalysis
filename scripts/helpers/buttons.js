@@ -1,5 +1,5 @@
 function addButtonClick() {
-  if (document.getElementById("videos-list").style.display === "block" && document.getElementById("songs").style.display === "none") {
+  if (document.getElementById("videos").style.display === "block" && document.getElementById("songs").style.display === "none") {
       var url = prompt("Enter a YouTube URL:");
       
       if (url.indexOf("?") >= 0) {
@@ -19,7 +19,7 @@ function addButtonClick() {
       var title = prompt("Enter a song title:");
       var id = prompt("Enter a song id:");
 
-      var tableItem = "<tr id='" + id + "' onclick='onSongClick(\"" + id + "\");' data-long-press-delay='1000'><td>" + title + "</td></tr>";
+      var tableItem = "<tr id='" + id + "' onclick='onSongClick(\"" + id + "\");' data-long-press-delay='500'><td>" + title + "</td></tr>";
 
       document.getElementById("all-songs").innerHTML += tableItem;
       localStorage.setItem("elton-songs", document.getElementById("all-songs").innerHTML);
@@ -31,7 +31,7 @@ function addButtonClick() {
 function backButtonClick() {
   if (document.getElementById("videos").style.display === "block") {
     removeVideoEvents();
-    
+
     document.getElementById("videos").style.display = "none";
     document.getElementById("videos-list").style.display = "none";
     document.getElementById("button-back").style.display = "none";
@@ -42,7 +42,7 @@ function backButtonClick() {
       document.getElementById("button-save").style.display = "none";
       document.getElementById("button-add").style.display = "block";
       document.getElementById("videos").style.display = "block";
-      document.getElementById("videos-list").style.display = "block";
+      document.getElementById("videos-list").style.display = "inline-table";
   }    
 }
 
