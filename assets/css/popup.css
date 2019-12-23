@@ -51,6 +51,26 @@
 	font-family: Helvetica; font-weight: bold; font-size: 22px;
 }
 
+.popup-button #popup-btn-regular {
+    padding: 5px;
+	background-image: linear-gradient(#5C7093, #32559C);    
+}
+
+.popup-button-over #popup-btn-regular {
+    padding: 5px;
+    background-image: linear-gradient(#7A8EB1, #5073BA);
+}
+
+.popup-button #popup-btn-cancel {
+    padding: 5px;
+	background-image: linear-gradient(#999, #777);
+}
+
+.popup-button-over #popup-btn-cancel {
+    padding: 5px;
+	background-image: linear-gradient(#BBB, #999);
+}
+
 #popup-container {
     display: unset;
     position: relative;

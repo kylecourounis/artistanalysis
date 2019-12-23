@@ -7,7 +7,7 @@ a {
   text-decoration: none;
 }
 
-table {
+.custom-tbl {
   display: inline-table;
   border-collapse: collapse;
   width: 100%;
@@ -15,7 +15,7 @@ table {
   font-size: 20px;
 }
 
-th, td {
+.custom-tbl th, td {
   padding: 15px;
   text-align: left;
   border-bottom: 1px solid #ddd;
