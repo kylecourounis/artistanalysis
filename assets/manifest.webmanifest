@@ -2,7 +2,7 @@
     "short_name": "SongAnalysis",
     "name": "Song Analysis",
     "description": "",
-    "start_url": "/index.html",
+    "start_url": "/eltoncollection/index.html",
     "display": "standalone",
     "orientation": "portrait",
     "background_color": "#ffffff",
