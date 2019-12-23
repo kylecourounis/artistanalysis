@@ -62,22 +62,22 @@ function addVideoEvents() {
   if (videos.length > 0) {
     for (var idx in videos) {
         var item = document.getElementById(videos.item(idx).id);
-        addEvent(item, "elton-" + item.id);
+        console.log("elton-" + song);
+        addEvent(item, "elton-" + song);
     }
   }
 }
 
-
 function removeVideoEvents() {
-    var videos = document.getElementById("videos-list").getElementsByTagName("tr");
+  var videos = document.getElementById("videos-list").getElementsByTagName("tr");
   
-    if (videos.length > 0) {
-      for (var idx in videos) {
-          var item = document.getElementById(videos.item(idx).id);
-          item.removeEventListener("long-press");
-      }
+  if (videos.length > 0) {
+    for (var idx in videos) {
+      var item = document.getElementById(videos.item(idx).id);
+      item.removeEventListener("long-press", null);
     }
   }
+}
 
 function addEvent(tableItem, storage) {
   tableItem.addEventListener("long-press", function (e) {

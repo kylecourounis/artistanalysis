@@ -2,15 +2,15 @@
     "short_name": "SongAnalysis",
     "name": "Song Analysis",
     "description": "",
-    "start_url": "/eltoncollection/index.html",
+    "start_url": "../index.html",
     "display": "standalone",
     "orientation": "portrait",
     "background_color": "#ffffff",
     "icons": [
-      {
-        "src": "images/icon.png",
-        "sizes": "96x96",
-        "type": "image/png"
-      }
+        {
+            "src": "images/icon.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        }
     ]
-  }
+}
