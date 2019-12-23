@@ -58,7 +58,7 @@ function saveButtonClick() {
   localStorage.setItem(videoId + "-notes", notes);
 }
 
-function okClicked(tableItem, storage) {
+function okClicked() {
   localStorage.setItem(storage, localStorage.getItem(storage).replace("<tbody>" + tableItem.outerHTML + "</tbody>", ""));
   
   if (storage === "elton-songs") {
@@ -69,6 +69,6 @@ function okClicked(tableItem, storage) {
 }
 
 function closePopup() {
-  document.getElementById("popup-container").style.display = "block";
+  document.getElementById("popup-container").style.display = "none";
   document.getElementById("popup-container").innerHTML = "";
 }
