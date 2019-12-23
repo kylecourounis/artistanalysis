@@ -8,7 +8,7 @@ a {
 }
 
 table {
-  display: block;
+  display: inline-table;
   border-collapse: collapse;
   width: 100%;
   font-family: Helvetica, Arial;
