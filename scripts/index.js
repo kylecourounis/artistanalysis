@@ -89,7 +89,7 @@ function addEvent(t, s) {
   storage = s;
 
   tableItem.addEventListener("long-press", function (e) {
-    setHTML("popup-container", getSnippet("confirm-delete"));
+    document.getElementById("popup-container").innerHTML = getSnippet("confirm-delete");
     document.getElementById("popup-container").style.display = "block";
   });
 }
