@@ -35,22 +35,20 @@
 .popup-button {
     position: relative;
     text-align: center;
-    height: 25px;
     margin: 15px;
 	border: 1px inset rgba(50,50,50,0.75); border-radius: 5px;
     box-shadow: 0 1px 0 #ccc; text-shadow: 0 -1px 0 #000;
-	font-family: Helvetica, Arial; font-weight: bold; font-size: 22px;
+	font-family: Helvetica, Arial; font-weight: bold;
     color: white;
 }
 
 .popup-button-over {
     position: relative;
     text-align: center;
-    height: 25px;
     margin: 15px;
 	border: 1px inset rgba(50,50,50,0.75); border-radius: 5px;
     box-shadow: 0 1px 0 #ccc; text-shadow: 0 0 5px rgba(255,255,255,0.5);
-	font-family: Helvetica, Arial; font-weight: bold; font-size: 22px;
+	font-family: Helvetica, Arial; font-weight: bold;
     color: white;
 }
 
@@ -77,4 +75,5 @@
 #popup-container {
     display: unset;
     position: relative;
+    color: white;
 }
