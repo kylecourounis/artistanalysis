@@ -2,7 +2,8 @@ var popups = {
     "saturday-night": createPath("saturday-night"),
     "standing": createPath("standing"),
     "bennie": createPath("bennie"),
-    "bitch": createPath("bitch")
+    "bitch": createPath("bitch"),
+    "confirm-delete": createPath("confirm-delete")
 };
 
 function getSnippet(name) {

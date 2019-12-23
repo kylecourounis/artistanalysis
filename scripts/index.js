@@ -1,6 +1,9 @@
 var song = "";
 var videoId = "";
 
+var tableItem;
+var storage;
+
 $(document).ready(function () {
   if (localStorage.getItem("elton-songs") !== null) {
     document.getElementById("all-songs").innerHTML += localStorage.getItem("elton-songs");
@@ -51,7 +54,9 @@ function addSongEvents() {
   if (songs.length > 0) {
     for (var idx in songs) {
         var item = document.getElementById(songs.item(idx).id);
-        addEvent(item, "elton-songs");
+        
+        tableItem = item;
+        storage = "elton-songs";
     }
   }
 }
@@ -62,8 +67,9 @@ function addVideoEvents() {
   if (videos.length > 0) {
     for (var idx in videos) {
       var item = document.getElementById(videos.item(idx).id);
-      console.log(item);
-      addEvent(item, "elton-" + song);
+
+      tableItem = item;
+      storage = "elton-" + song;
     }
   }
 }
@@ -74,6 +80,7 @@ function removeVideoEvents() {
   if (videos.length > 0) {
     for (var idx in videos) {
       var item = document.getElementById(videos.item(idx).id);
+      
       if (item !== null) {
         item.removeEventListener("long-press", null);
       }
@@ -81,13 +88,10 @@ function removeVideoEvents() {
   }
 }
 
-function addEvent(tableItem, storage) {
+function addEvent() {
   tableItem.addEventListener("long-press", function (e) {
-    if (getConfirmation(tableItem.innerText)) {
-      var stored = localStorage.getItem(storage);
-      stored = stored.replace("<tbody>" + tableItem.outerHTML + "</tbody>", "");
-      localStorage.setItem(storage, stored);
-      window.location = "index.html";
-    }
+    setHTML("popup-container", getSnippet("confirm-delete"));
+    document.getElementById("popup-container").style.display = "block";
   });
 }
+
