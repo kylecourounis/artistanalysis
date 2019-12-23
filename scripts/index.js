@@ -13,7 +13,7 @@ function onSongClick(name) {
 
   document.getElementById("songs").style.display = "none";
   document.getElementById("videos").style.display = "block";
-  document.getElementById("videos-list").style.display = "block";
+  document.getElementById("videos-list").style.display = "inline-table";
   document.getElementById("button-back").style.display = "block";
   document.getElementById("button-add").style.display = "block";
 
@@ -61,9 +61,8 @@ function addVideoEvents() {
 
   if (videos.length > 0) {
     for (var idx in videos) {
-        var item = document.getElementById(videos.item(idx).id);
-        console.log("elton-" + song);
-        addEvent(item, "elton-" + song);
+      var item = document.getElementById(videos.item(idx).id);
+      addEvent(item, "elton-" + song);
     }
   }
 }
