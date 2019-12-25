@@ -21,7 +21,7 @@ function onSongClick(name) {
   document.getElementById("button-add").style.display = "block";
 
   if (localStorage.getItem("elton-" + name) === null) {
-    setHTML("#videos-list", getSnippet(name));
+    setHTML("#videos-list", "");
   } else {
     setHTML("#videos-list", localStorage.getItem("elton-" + name));
   }
