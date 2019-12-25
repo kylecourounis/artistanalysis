@@ -19,9 +19,8 @@
 }
 
 .popup-header {
-    display: block; align-items: center;
+    display: grid; align-items: center;
     height: 30px;
-    padding-top: 5px;
     background-image: linear-gradient(#001bf2, #02018e);
     color: #FFF;
 }

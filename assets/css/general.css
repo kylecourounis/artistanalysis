@@ -11,16 +11,14 @@ a {
   display: inline-table;
   border-collapse: collapse;
   width: 100%;
-  font-family: Helvetica, Arial;
-  font-size: 20px;
+  font-family: Helvetica, Arial; font-size: 20px;
 }
 
 .custom-tbl th, td {
   padding: 15px;
-  text-align: left;
   border-bottom: 1px solid #ddd;
-  font-family: Helvetica;
-  font-size: 20px;
+  text-align: left;
+  font-family: Helvetica; font-size: 20px;
 }
 
 #songs {
@@ -43,27 +41,23 @@ a {
 #button-back {
   display: none;
   position: absolute;
-  bottom: 7px;
-  left: 9px;
+  bottom: 7px; left: 9px;
 }
 
 #button-add {
   display: block;
   position: absolute;
-  bottom: 7px;
-  right: 9px;
+  bottom: 7px; right: 9px;
 }
 
 #button-save {
   display: none;
   position: absolute;
-  bottom: 7px;
-  right: 9px;
+  bottom: 7px; right: 9px;
 }
 
 #notes-section {
-  width: 100%;
   padding: 5px;
-  border-width: medium;
-  border-color: slategray
+  width: 100%;
+  border-width: medium; border-color: slategray
 }
