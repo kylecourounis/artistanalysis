@@ -26,6 +26,20 @@ function addButtonClick() {
   }
 }
 
+function testAddSong(id, title) {
+  var tableItem = "<tr id='" + id + "' onclick='onSongClick(\"" + id + "\");' data-long-press-delay='500'><td>" + title + "</td></tr>";
+
+  document.getElementById("all-songs").innerHTML += tableItem;
+  localStorage.setItem("elton-songs", document.getElementById("all-songs").innerHTML);
+  localStorage.setItem("elton-songs", localStorage.getItem("elton-songs").trim());
+} 
+
+function testAddSongs() {
+  for (var i = 0; i < 15; i++) {
+    testAddSong("test" + i, "Test" + i);
+  }
+}
+
 function createVideoElement() {
   var tableItem = "<tr id='" + videoId + "' onclick='onVideoClick(\"" + videoId + "\")' data-long-press-delay='500'><td>" + getVideoTitle() + "</td></tr>";
 

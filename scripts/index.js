@@ -5,6 +5,8 @@ var tableItem;
 var storage;
 
 $(document).ready(function () {
+  testAddSongs();
+  
   if (localStorage.getItem("elton-songs") !== null) {
     document.getElementById("all-songs").innerHTML += localStorage.getItem("elton-songs");
     addSongEvents();
