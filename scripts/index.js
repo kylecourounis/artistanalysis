@@ -90,7 +90,6 @@ function addEvent(t, s) {
 
   tableItem.addEventListener("long-press", function (e) {
     document.getElementById("popup-container").innerHTML = getSnippet("confirm-delete");
-    document.getElementById("popup-container").style.display = "block";
   });
 }
 

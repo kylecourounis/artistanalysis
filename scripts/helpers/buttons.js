@@ -20,6 +20,7 @@ function addButtonClick() {
 
     document.getElementById("all-songs").innerHTML += tableItem;
     localStorage.setItem("elton-songs", document.getElementById("all-songs").innerHTML);
+    localStorage.setItem("elton-songs", localStorage.getItem("elton-songs").trim());
 
     addEvent(document.getElementById(id), "elton-songs");
   }
@@ -30,6 +31,7 @@ function createVideoElement() {
 
   document.getElementById("videos").getElementsByTagName("table")[0].innerHTML += tableItem;
   localStorage.setItem("elton-" + song, document.getElementById("videos").getElementsByTagName("table")[0].innerHTML);
+  localStorage.setItem("elton-" + song, localStorage.getItem("elton-" + song).trim());
 
   addEvent(document.getElementById(videoId), "elton-" + song);
 }
@@ -60,6 +62,7 @@ function saveButtonClick() {
 
 function okClicked() {
   localStorage.setItem(storage, localStorage.getItem(storage).replace("<tbody>" + tableItem.outerHTML + "</tbody>", ""));
+  localStorage.setItem(storage, localStorage.getItem(storage).trim());
   
   if (storage === "elton-songs") {
     document.getElementById("all-songs").innerHTML = localStorage.getItem(storage);
