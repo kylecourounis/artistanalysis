@@ -3,7 +3,8 @@ var popups = {
     "standing": createPath("standing"),
     "bennie": createPath("bennie"),
     "bitch": createPath("bitch"),
-    "confirm-delete": createPath("confirm-delete")
+    "confirm-delete": createPath("confirm-delete"),
+    "add-song": createPath("add-song")
 };
 
 function getSnippet(name) {
@@ -28,4 +29,18 @@ function setHTML(id, data) {
 
 function createPath(file) {
     return "snippets/" + file + ".html";
+}
+
+function testAddSong(id, title) {
+  var tableItem = "<tr id='" + id + "' onclick='onSongClick(\"" + id + "\");' data-long-press-delay='500'><td>" + title + "</td></tr>";
+
+  document.getElementById("all-songs").innerHTML += tableItem;
+  localStorage.setItem("elton-songs", document.getElementById("all-songs").innerHTML);
+  localStorage.setItem("elton-songs", localStorage.getItem("elton-songs").trim());
+} 
+
+function testAddSongs() {
+  for (var i = 0; i < 15; i++) {
+    testAddSong("test" + i, "Test" + i);
+  }
 }

@@ -5,7 +5,7 @@ var tableItem;
 var storage;
 
 $(document).ready(function () {
-  testAddSongs();
+  // testAddSongs();
   
   if (localStorage.getItem("elton-songs") !== null) {
     document.getElementById("all-songs").innerHTML += localStorage.getItem("elton-songs");
@@ -51,13 +51,10 @@ function onVideoClick(id) {
 }
 
 function addSongEvents() {
-  var songs = document.getElementById("all-songs").getElementsByTagName("tr");
+  var table = document.getElementById("all-songs");
 
-  if (songs.length > 0) {
-    for (var idx in songs) {
-        var item = document.getElementById(songs.item(idx).id);
-        addEvent(item, "elton-songs");
-    }
+  for (var i = 0, row; row = table.rows[i]; i++) {
+    addEvent(row, "elton-songs");
   }
 }
 
@@ -90,7 +87,7 @@ function addEvent(t, s) {
   tableItem = t;
   storage = s;
 
-  tableItem.addEventListener("long-press", function (e) {
+  t.addEventListener("long-press", function (e) {
     document.getElementById("popup-container").innerHTML = getSnippet("confirm-delete");
   });
 }

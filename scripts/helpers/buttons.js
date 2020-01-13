@@ -13,31 +13,23 @@ function addButtonClick() {
         url = null;      
     }
   } else {
-    var title = prompt("Enter a song title:");
-    var id = prompt("Enter a song id:");
-
-    var tableItem = "<tr id='" + id + "' onclick='onSongClick(\"" + id + "\");' data-long-press-delay='500'><td>" + title + "</td></tr>";
-
-    document.getElementById("all-songs").innerHTML += tableItem;
-    localStorage.setItem("elton-songs", document.getElementById("all-songs").innerHTML);
-    localStorage.setItem("elton-songs", localStorage.getItem("elton-songs").trim());
-
-    addEvent(document.getElementById(id), "elton-songs");
+    document.getElementById("popup-container").innerHTML = getSnippet("add-song");
   }
 }
 
-function testAddSong(id, title) {
+function addButtonDone() {
+  var id = document.getElementById("input-song-id").value;
+  var title = document.getElementById("input-song-name").value;
+
   var tableItem = "<tr id='" + id + "' onclick='onSongClick(\"" + id + "\");' data-long-press-delay='500'><td>" + title + "</td></tr>";
 
   document.getElementById("all-songs").innerHTML += tableItem;
   localStorage.setItem("elton-songs", document.getElementById("all-songs").innerHTML);
   localStorage.setItem("elton-songs", localStorage.getItem("elton-songs").trim());
-} 
 
-function testAddSongs() {
-  for (var i = 0; i < 15; i++) {
-    testAddSong("test" + i, "Test" + i);
-  }
+  addEvent(document.getElementById(id), "elton-songs");
+
+  // okClicked();
 }
 
 function createVideoElement() {
@@ -75,6 +67,8 @@ function saveButtonClick() {
 }
 
 function okClicked() {
+  // closePopup();
+
   localStorage.setItem(storage, localStorage.getItem(storage).replace("<tbody>" + tableItem.outerHTML + "</tbody>", ""));
   localStorage.setItem(storage, localStorage.getItem(storage).trim());
   
@@ -83,11 +77,22 @@ function okClicked() {
   } else {
     document.getElementById(tableItem.parentElement.parentElement.id).innerHTML = localStorage.getItem(storage);
   }
-
-  closePopup();
 }
 
 function closePopup() {
-  document.getElementById("popup-container").style.display = "none";
   document.getElementById("popup-container").innerHTML = "";
+}
+
+function glow(where) {
+	var offset = $("#" + where + "").offset();
+	var width = $("#" + where + "").width();
+  document.getElementById("glow").style.left = offset.left - ((80-width) / 2) + 'px';
+  
+	var height = $("#" + where + "").height();
+	document.getElementById("glow").style.top = offset.top - ((80-height) / 2) + 'px';
+	document.getElementById("glow").style.display = "block";
+}
+
+function noGlow() {
+	document.getElementById("glow").style.display = "none";
 }
