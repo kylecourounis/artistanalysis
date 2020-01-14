@@ -24,6 +24,7 @@ function onSongClick(name) {
 
   if (localStorage.getItem("elton-" + name) === null) {
     setHTML("#videos-list", "");
+    localStorage.setItem("elton-" + name, "");
   } else {
     setHTML("#videos-list", localStorage.getItem("elton-" + name));
   }
@@ -51,10 +52,10 @@ function onVideoClick(id) {
 }
 
 function addSongEvents() {
-  var table = document.getElementById("all-songs");
+  var rows = document.getElementById("all-songs").rows;
 
-  for (var i = 0, row; row = table.rows[i]; i++) {
-    addEvent(row, "elton-songs");
+  for (var i = 0; i < rows.length; i++) {
+    addEvent(rows[i], "elton-songs");
   }
 }
 
@@ -90,5 +91,7 @@ function addEvent(t, s) {
   t.addEventListener("long-press", function (e) {
     document.getElementById("popup-container").innerHTML = getSnippet("confirm-delete");
   });
+
+  console.log("Added event to " + t.id);
 }
 

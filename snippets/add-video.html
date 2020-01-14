@@ -1,0 +1,19 @@
+<div align="center" id="popup" class="popup">
+  <img class="popup-close-button" onclick="closePopup()" src="assets/images/close.png" />
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" style="color: white;">
+      <th id="popup-header" class="popup-header">Add Video</th>     
+      <tr></tr>
+      <th>
+          <br />
+
+          <input type="text" id="input-yt-url" name="yt-url" placeholder="Enter URL"></input>
+
+          <div class="popup-button" id="popup-button" ontouchstart="this.className='popup-button-over';" ontouchend="this.className='popup-button';"> 
+              <div id="popup-btn-regular" onclick="addButtonDone()">OK</div>
+          </div>
+          <div class="popup-button" id="popup-button" ontouchstart="this.className='popup-button-over';" ontouchend="this.className='popup-button';"> 
+              <div id="popup-btn-cancel" onclick="closePopup()">Cancel</div>
+          </div>
+      </th>
+  </table>
+</div>

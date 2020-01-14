@@ -11,6 +11,10 @@ a {
   text-decoration: none;
 }
 
+#dummy {
+  overflow-y: hidden; 
+}
+
 #wrapper {
 }
 

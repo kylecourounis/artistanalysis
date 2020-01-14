@@ -4,7 +4,8 @@ var popups = {
     "bennie": createPath("bennie"),
     "bitch": createPath("bitch"),
     "confirm-delete": createPath("confirm-delete"),
-    "add-song": createPath("add-song")
+    "add-song": createPath("add-song"),
+    "add-video": createPath("add-video")    
 };
 
 function getSnippet(name) {
