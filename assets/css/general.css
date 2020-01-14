@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  overflow-y: none;
+  overscroll-behavior-y: none;
 }
 
 a {
@@ -13,8 +13,6 @@ a {
   border-collapse: collapse;
   width: 100%;
   font-family: Helvetica, Arial; font-size: 20px;
-  overflow: auto;
-  overscroll-behavior: contain;
 }
 
 .custom-tbl th, td {
