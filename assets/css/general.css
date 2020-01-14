@@ -5,17 +5,11 @@ html {
 body {
   margin: 0;
   padding: 0;
+  overflow-y: hidden;
 }
 
 a {
   text-decoration: none;
-}
-
-#dummy {
-  overflow-y: hidden; 
-}
-
-#wrapper {
 }
 
 .custom-tbl {
