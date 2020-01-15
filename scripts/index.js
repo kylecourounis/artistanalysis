@@ -7,19 +7,19 @@ var storage;
 let startY = 0;
 const wrapper = document.querySelector("#wrapper");
 
-wrapper.addEventListener("touchstart", e => {
-  startY = e.touches[0].pageY;
-}, { passive: true });
-
-wrapper.addEventListener("touchmove", e => {
-  const y = e.touches[0].pageY;
-
-  if (document.scrollingElement.scrollTop === 0 && y > startY) { }
-}, { passive: true });
-
 $(document).ready(function () {
   // testAddSongs();
-  
+
+  wrapper.addEventListener("touchstart", e => {
+    startY = e.touches[0].pageY;
+  }, { passive: true });
+
+  wrapper.addEventListener("touchmove", e => {
+    const y = e.touches[0].pageY;
+
+    if (document.scrollingElement.scrollTop === 0 && y > startY) { }
+  }, { passive: true });
+
   if (localStorage.getItem("elton-songs") !== null) {
     document.getElementById("all-songs").innerHTML += localStorage.getItem("elton-songs");
     addSongEvents();
