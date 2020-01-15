@@ -4,53 +4,27 @@ var videoId = "";
 var tableItem;
 var storage;
 
-function touchEvents() {
-  var touchStartHandler, touchMoveHandler, touchPoint;
-
-  // Only needed for touch events on chrome.
-  if ((window.chrome || navigator.userAgent.match("CriOS")) && "ontouchstart" in document.documentElement) {
-    touchStartHandler = function() {
-      // Only need to handle single-touch cases
-      touchPoint = event.touches.length === 1 ? event.touches[0].clientY : null;
-    };
-
-    touchMoveHandler = function(event) {
-      var newTouchPoint;
-
-      // Only need to handle single-touch cases
-      if (event.touches.length !== 1) {
-        touchPoint = null;
-        return;
-      }
-
-      newTouchPoint = event.touches[0].clientY;
-      if (newTouchPoint > touchPoint) {
-        event.preventDefault();
-      }
-      touchPoint = newTouchPoint;
-    };
-
-    document.addEventListener("touchstart", touchStartHandler, {
-      passive: false
-    });
-
-    document.addEventListener("touchmove", touchMoveHandler, {
-      passive: false
-    });
-  }
-
-  console.log("Started events");
-};
+let startY = 0;
+const wrapper = document.querySelector("#wrapper");
 
 $(document).ready(function () {
   // testAddSongs();
+  
+  wrapper.addEventListener("touchstart", e => {
+    startY = e.touches[0].pageY;
+  }, {passive: true});
+
+  wrapper.addEventListener("touchmove", e => {
+    const y = e.touches[0].pageY;
+
+    if (document.scrollingElement.scrollTop === 0 && y > startY) { }
+  }, { passive: true });
   
   if (localStorage.getItem("elton-songs") !== null) {
     document.getElementById("all-songs").innerHTML += localStorage.getItem("elton-songs");
     addSongEvents();
   }
-
-  touchEvents();
+  
 });
 
 function onSongClick(name) {
@@ -131,6 +105,4 @@ function addEvent(t, s) {
   t.addEventListener("long-press", function (e) {
     document.getElementById("popup-container").innerHTML = getSnippet("confirm-delete");
   });
-
-  console.log("Added event to " + t.id);
 }
