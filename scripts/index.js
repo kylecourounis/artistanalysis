@@ -4,8 +4,21 @@ var videoId = "";
 var tableItem;
 var storage;
 
+var target = window;
+var last_y = 0;
+target.addEventListener('touchmove', function (e) {
+  var scrolly = target.pageYOffset || target.scrollTop || 0;
+  var direction = e.changedTouches[0].pageY > last_y ? 1 : -1;
+
+  if (direction > 0 && scrolly === 0) {
+    e.preventDefault();
+  }
+
+  last_y = e.changedTouches[0].pageY;
+});
+
 $(document).ready(function () {
-  testAddSongs();
+  // testAddSongs();
   
   if (localStorage.getItem("elton-songs") !== null) {
     document.getElementById("all-songs").innerHTML += localStorage.getItem("elton-songs");
