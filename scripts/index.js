@@ -4,18 +4,43 @@ var videoId = "";
 var tableItem;
 var storage;
 
-var target = window;
-var last_y = 0;
-target.addEventListener('touchmove', function (e) {
-  var scrolly = target.pageYOffset || target.scrollTop || 0;
-  var direction = e.changedTouches[0].pageY > last_y ? 1 : -1;
+function touchEvents() {
+  var touchStartHandler, touchMoveHandler, touchPoint;
 
-  if (direction > 0 && scrolly === 0) {
-    e.preventDefault();
+  // Only needed for touch events on chrome.
+  if ((window.chrome || navigator.userAgent.match("CriOS")) && "ontouchstart" in document.documentElement) {
+    touchStartHandler = function() {
+      // Only need to handle single-touch cases
+      touchPoint = event.touches.length === 1 ? event.touches[0].clientY : null;
+    };
+
+    touchMoveHandler = function(event) {
+      var newTouchPoint;
+
+      // Only need to handle single-touch cases
+      if (event.touches.length !== 1) {
+        touchPoint = null;
+        return;
+      }
+
+      newTouchPoint = event.touches[0].clientY;
+      if (newTouchPoint > touchPoint) {
+        event.preventDefault();
+      }
+      touchPoint = newTouchPoint;
+    };
+
+    document.addEventListener("touchstart", touchStartHandler, {
+      passive: false
+    });
+
+    document.addEventListener("touchmove", touchMoveHandler, {
+      passive: false
+    });
   }
 
-  last_y = e.changedTouches[0].pageY;
-});
+  console.log("Started events");
+};
 
 $(document).ready(function () {
   // testAddSongs();
@@ -24,6 +49,8 @@ $(document).ready(function () {
     document.getElementById("all-songs").innerHTML += localStorage.getItem("elton-songs");
     addSongEvents();
   }
+
+  touchEvents();
 });
 
 function onSongClick(name) {
