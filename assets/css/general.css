@@ -24,6 +24,8 @@ a {
 
 #songs {
   display: block;
+  /* transition: all 400ms ease 0s; 
+  transform: translate3d(-640px, 0px, 0px); */
 }
 
 #video-container {
@@ -32,11 +34,13 @@ a {
 }
 
 #videos {
-  display: none;
+  display: block;
+  /* transition: all 400ms ease 0s; 
+  transform: translate3d(-640px, 0px, 0px); */
 }
 
 #videos-list {
-  display: none;
+  display: block;
 }
 
 #button-back {

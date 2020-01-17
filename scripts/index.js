@@ -1,6 +1,8 @@
 var song = "";
 var videoId = "";
 
+var moveItBy;
+
 var tableItem;
 var storage;
 
@@ -8,7 +10,7 @@ let startY = 0;
 const wrapper = document.querySelector("#wrapper");
 
 $(document).ready(function () {
-  // testAddSongs();
+  testAddSongs();
 
   wrapper.addEventListener("touchstart", e => {
     startY = e.touches[0].pageY;
@@ -24,14 +26,18 @@ $(document).ready(function () {
     document.getElementById("all-songs").innerHTML += localStorage.getItem("elton-songs");
     addSongEvents();
   }
+
+  // slide("songs", "videos");
+  sliding("songs", "r");
 });
 
 function onSongClick(name) {
   song = name;
 
-  document.getElementById("songs").style.display = "none";
-  document.getElementById("videos").style.display = "block";
-  document.getElementById("videos-list").style.display = "inline-table";
+  // slide("videos", "songs");
+  sliding("videos", "l");
+
+  // document.getElementById("videos-list").style.display = "inline-table";
   document.getElementById("button-back").style.display = "block";
   document.getElementById("button-add").style.display = "block";
 
@@ -46,7 +52,6 @@ function onSongClick(name) {
 function onVideoClick(id) {
   videoId = id;
 
-  document.getElementById("videos").style.display = "none";
   document.getElementById("videos-list").style.display = "none";
   document.getElementById("button-add").style.display = "none";
   document.getElementById("video-container").style.display = "block";
@@ -62,6 +67,8 @@ function onVideoClick(id) {
   document.getElementById("video-container").innerHTML = "<iframe width=\'390\' height=\'315\' src='https\:/\/www.youtube.com/embed/" + id + "/frameborder=\'0\' allow=\'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\' allowfullscreen></iframe><br /><br/><br /><center><textarea id='notes-section' rows='10' cols='53'>" + notes + "</textarea>";
 
   addVideoEvents();
+
+  // slide("video-container", "videos");
 }
 
 function addSongEvents() {
@@ -82,8 +89,7 @@ function addVideoEvents() {
     }
   }
 }
-
-function removeVideoEvents() {
+/* function removeVideoEvents() {
   var videos = document.getElementById("videos-list").getElementsByTagName("tr");
   
   if (videos.length > 0) {
@@ -95,13 +101,49 @@ function removeVideoEvents() {
       }
     }
   }
-}
+} */
 
 function addEvent(t, s) {
-  tableItem = t;
   storage = s;
-
-  t.addEventListener("long-press", function (e) {
+  
+  $("#" + t.id).on("long-press", function (e) {
+    tableItem = t;
+    
+    // document.getElementById("popup-container").display = "contents";
     document.getElementById("popup-container").innerHTML = getSnippet("confirm-delete");
   });
 }
+
+function sliding(id, direction) {
+	if (direction === 'l') { moveItBy = moveItBy - 640; } else {
+		moveItBy = moveItBy+640;
+		if (document.getElementById('wrapper').style.webkitTransform=='translate3d(-640px, 0px, 0px)') { setTimeout(function(){document.getElementById(id).innerHTML=""},405); }
+	}
+	document.getElementById('wrapper').style.webkitTransform='translate3d(' + moveItBy + 'px,0px,0px)';
+}
+/* 
+function slide(id, toHide, val) {
+  if (val === "r") {
+    console.log("right");
+
+    document.getElementById(toHide).style.webkitTransform = "translate3d(640px, 0px, 0px)";
+    document.getElementById(id).style.webkitTransform = "translate3d(0px, 0px, 0px)";
+  } else if (val === "l" || document.getElementById(id).style.webkitTransform === "translate3d(-640px, 0px, 0px)") {
+    console.log("left");
+
+    document.getElementById(toHide).style.webkitTransform = "translate3d(-640px, 0px, 0px)";
+    document.getElementById(id).style.webkitTransform = "translate3d(0px, 0px, 0px)";
+  } else {
+    console.log("right");
+
+    document.getElementById(toHide).style.webkitTransform = "translate3d(640px, 0px, 0px)";
+    document.getElementById(id).style.webkitTransform = "translate3d(0px, 0px, 0px)";
+  }
+    
+  setTimeout(function () {
+    document.getElementById(toHide).style.display = "none";
+    document.getElementById(id).style.display = "block";
+  }, 200);
+} */
+
+//https://www.youtube.com/watch?v=s8yJ539jUEA

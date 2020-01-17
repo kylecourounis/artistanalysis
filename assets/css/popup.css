@@ -15,7 +15,7 @@
   background: lightblue;
   font-family: Helvetica, Arial;
   color: white;
-  z-index: 2;
+  z-index: 3;
 }
 
 .popup-header {
@@ -75,4 +75,5 @@
   display: contents;
   position: absolute;
   color: white;
+  z-index: 3;
 }

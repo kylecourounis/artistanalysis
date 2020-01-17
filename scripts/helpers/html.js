@@ -32,8 +32,8 @@ function createPath(file) {
     return "snippets/" + file + ".html";
 }
 
-function testAddSong(id, title) {
-  var tableItem = "<tr id='" + id + "' onclick='onSongClick(\"" + id + "\");' data-long-press-delay='500'><td>" + title + "</td></tr>";
+function addSong(id, title) {
+  var tableItem = "<tr id='" + id + "' onclick='onSongClick(\"" + id + "\");' data-long-press-delay='300'><td>" + title + "</td></tr>";
 
   document.getElementById("all-songs").innerHTML += tableItem;
   localStorage.setItem("elton-songs", document.getElementById("all-songs").innerHTML);
@@ -42,6 +42,6 @@ function testAddSong(id, title) {
 
 function testAddSongs() {
   for (var i = 0; i < 15; i++) {
-    testAddSong("test" + i, "Test" + i);
+    addSong("test" + i, "Test" + i);
   }
 }
