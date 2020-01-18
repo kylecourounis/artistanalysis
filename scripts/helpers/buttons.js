@@ -49,6 +49,7 @@ function saveButtonClick() {
 
 function closePopup() {
   getElement("popup-container").innerHTML = "";
+  getElement("loader").style.display = "none";
 }
 
 function glow(where) {

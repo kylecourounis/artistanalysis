@@ -29,49 +29,58 @@ $(document).ready(function () {
 function onSongClick(name) {
   song = name;
 
+  window.scrollTo(0, 0);
+
   getElement("loader").style.display = "block";
 
-  getElement("songs").style.display = "none";
-  getElement("button-debug").style.display = "none";
-  
-  getElement("button-back").style.display = "block";
-  getElement("button-add").style.display = "block";
-  getElement("videos").style.display = "block";
-  getElement("videos-list").style.display = "inline-table";
-  
-  if (localStorage.getItem("elton-" + name) === null) {
-    setHTML("#videos-list", "");
-    localStorage.setItem("elton-" + name, "");
-  } else {
-    setHTML("#videos-list", localStorage.getItem("elton-" + name));
-  }
+  setTimeout(function () {
+    getElement("loader").style.display = "none";
 
-  hideLoader();
+    getElement("songs").style.display = "none";
+    getElement("button-debug").style.display = "none";
+    
+    getElement("button-back").style.display = "block";
+    getElement("button-add").style.display = "block";
+    getElement("videos").style.display = "block";
+    getElement("videos-list").style.display = "inline-table";
+    
+    if (localStorage.getItem("elton-" + name) === null) {
+      setHTML("#videos-list", "");
+      localStorage.setItem("elton-" + name, "");
+    } else {
+      setHTML("#videos-list", localStorage.getItem("elton-" + name));
+    }
+  }, 500);
 }
 
 function onVideoClick(id) {
   videoId = id;
 
+  window.scrollTo(0, 0);
+
   getElement("loader").style.display = "block";
 
-  getElement("button-add").style.display = "none";
-  getElement("button-back").style.display = "block";
-  getElement("button-save").style.display = "block";
-  getElement("videos").style.display = "none";
-  getElement("videos-list").style.display = "none";
-  getElement("video-container").style.display = "block";
+  setTimeout(function () {
+    getElement("loader").style.display = "none";
 
-  if (localStorage.getItem(id + "-notes") === "null" || localStorage.getItem(id + "-notes") === null ) {
-    localStorage.setItem(id + "-notes", "");
-  }
+    getElement("button-add").style.display = "none";
+    getElement("button-back").style.display = "block";
+    getElement("button-save").style.display = "block";
+    
+    getElement("videos").style.display = "none";
+    getElement("videos-list").style.display = "none";
+    getElement("video-container").style.display = "block";
 
-  var notes = localStorage.getItem(id + "-notes"); 
+    if (localStorage.getItem(id + "-notes") === "null" || localStorage.getItem(id + "-notes") === null ) {
+      localStorage.setItem(id + "-notes", "");
+    }
 
-  getElement("video-container").innerHTML = "<iframe width=\'390\' height=\'315\' src='https\:/\/www.youtube.com/embed/" + id + "/frameborder=\'0\' allow=\'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\' allowfullscreen></iframe><br /><br/><center><textarea id='notes-section' rows='10' cols='53'>" + notes + "</textarea>";
+    var notes = localStorage.getItem(id + "-notes");
 
-  addVideoEvents();
+    getElement("video-container").innerHTML = "<iframe width=\'390\' height=\'315\' src='https\:/\/www.youtube.com/embed/" + id + "/frameborder=\'0\' allow=\'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\' allowfullscreen></iframe><br /><br/><center><textarea id='notes-section' rows='10' cols='53'>" + notes + "</textarea>";
 
-  hideLoader();
+    addVideoEvents();
+  }, 500);
 }
 
 function addSongEvents() {
