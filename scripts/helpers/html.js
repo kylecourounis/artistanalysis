@@ -32,16 +32,26 @@ function createPath(file) {
     return "snippets/" + file + ".html";
 }
 
-function addSong(id, title) {
-  var tableItem = "<tr id='" + id + "' onclick='onSongClick(\"" + id + "\");' data-long-press-delay='300'><td>" + title + "</td></tr>";
+function testAddSong(id, title) {
+  var tableItem = "<tr id='" + id + "' onclick='onSongClick(\"" + id + "\");' data-long-press-delay='500'><td>" + title + "</td></tr>";
 
-  document.getElementById("all-songs").innerHTML += tableItem;
-  localStorage.setItem("elton-songs", document.getElementById("all-songs").innerHTML);
+  getElement("all-songs").innerHTML += tableItem;
+  localStorage.setItem("elton-songs", getElement("all-songs").innerHTML);
   localStorage.setItem("elton-songs", localStorage.getItem("elton-songs").trim());
 } 
 
 function testAddSongs() {
   for (var i = 0; i < 15; i++) {
-    addSong("test" + i, "Test" + i);
+    testAddSong("test" + i, "Test" + i);
   }
+}
+
+function getElement(id) {
+  return document.getElementById(id);
+}
+
+function hideLoader() {
+  setTimeout(function () {
+    getElement("loader").style.display = "none";
+  }, 600);
 }
