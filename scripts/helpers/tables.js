@@ -54,6 +54,7 @@ function addSong(title) {
   }
 
   var id = title.toLowerCase().replace(/\ /g, "-").replace("'", "");
+  song = id;
 
   var tableItem = "<tr id='" + id + "' onclick='onSongClick(\"" + id + "\");' data-long-press-delay='300'><td>" + title + "</td></tr>";
 
