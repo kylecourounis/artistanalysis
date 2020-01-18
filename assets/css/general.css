@@ -25,7 +25,7 @@ a {
 #loader {
   display: none;
   width: 100px; height: 50px;
-  position: absolute;
+  position: fixed;
   left: 150px; bottom: 350px;
   background: url("../images/loader.gif") no-repeat center center rgba(0,0,0,0.85);
   -webkit-border-radius: 10px;
@@ -49,28 +49,16 @@ a {
   display: none;
 }
 
-#button-back {
-  display: none;
-  position: absolute;
-  bottom: 7px; left: 9px;
-}
-
-#button-add {
-  display: block;
-  position: absolute;
-  bottom: 7px; right: 9px;
-}
-
-#button-save {
-  display: none;
-  position: absolute;
-  bottom: 7px; right: 9px;
-}
-
 #notes-section {
-  padding: 5px;
   width: 100%;
-  border-width: medium; border-color: slategray
+  padding: 5px 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 15px;
 }
 
 input[type=text] {

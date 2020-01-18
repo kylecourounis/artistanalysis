@@ -17,6 +17,7 @@ function backButtonClick() {
     getElement("videos").style.display = "none";
     getElement("videos-list").style.display = "none";
     getElement("button-back").style.display = "none";
+    getElement("button-debug").style.display = "block";
     getElement("songs").style.display = "block";
   } else if (getElement("video-container").style.display === "block") {
     getElement("video-container").innerHTML = "";
@@ -28,9 +29,22 @@ function backButtonClick() {
   }
 }
 
+function debugButtonClick() {
+  getElement("loader").style.display = "block";
+
+  setTimeout(function () {
+    getElement("loader").style.display = "none";
+    getElement("popup-container").innerHTML = getSnippet("debug-menu");
+  }, 400);
+}
+
 function saveButtonClick() {
+  getElement("loader").style.display = "block";
+
   var notes = getElement("notes-section").value;
   localStorage.setItem(videoId + "-notes", notes);
+
+  hideLoader();
 }
 
 function closePopup() {

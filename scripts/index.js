@@ -32,11 +32,13 @@ function onSongClick(name) {
   getElement("loader").style.display = "block";
 
   getElement("songs").style.display = "none";
-  getElement("videos").style.display = "block";
-  getElement("videos-list").style.display = "inline-table";
+  getElement("button-debug").style.display = "none";
+  
   getElement("button-back").style.display = "block";
   getElement("button-add").style.display = "block";
-
+  getElement("videos").style.display = "block";
+  getElement("videos-list").style.display = "inline-table";
+  
   if (localStorage.getItem("elton-" + name) === null) {
     setHTML("#videos-list", "");
     localStorage.setItem("elton-" + name, "");
@@ -52,12 +54,12 @@ function onVideoClick(id) {
 
   getElement("loader").style.display = "block";
 
-  getElement("videos").style.display = "none";
-  getElement("videos-list").style.display = "none";
   getElement("button-add").style.display = "none";
-  getElement("video-container").style.display = "block";
   getElement("button-back").style.display = "block";
   getElement("button-save").style.display = "block";
+  getElement("videos").style.display = "none";
+  getElement("videos-list").style.display = "none";
+  getElement("video-container").style.display = "block";
 
   if (localStorage.getItem(id + "-notes") === "null" || localStorage.getItem(id + "-notes") === null ) {
     localStorage.setItem(id + "-notes", "");
@@ -65,7 +67,7 @@ function onVideoClick(id) {
 
   var notes = localStorage.getItem(id + "-notes"); 
 
-  getElement("video-container").innerHTML = "<iframe width=\'390\' height=\'315\' src='https\:/\/www.youtube.com/embed/" + id + "/frameborder=\'0\' allow=\'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\' allowfullscreen></iframe><br /><br/><br /><center><textarea id='notes-section' rows='10' cols='53'>" + notes + "</textarea>";
+  getElement("video-container").innerHTML = "<iframe width=\'390\' height=\'315\' src='https\:/\/www.youtube.com/embed/" + id + "/frameborder=\'0\' allow=\'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\' allowfullscreen></iframe><br /><br/><center><textarea id='notes-section' rows='10' cols='53'>" + notes + "</textarea>";
 
   addVideoEvents();
 

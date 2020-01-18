@@ -5,7 +5,8 @@ var popups = {
     "bitch": createPath("bitch"),
     "confirm-delete": createPath("confirm-delete"),
     "add-song": createPath("add-song"),
-    "add-video": createPath("add-video")    
+    "add-video": createPath("add-video"),
+    "debug-menu": createPath("debug-menu")
 };
 
 function getSnippet(name) {
@@ -30,20 +31,6 @@ function setHTML(id, data) {
 
 function createPath(file) {
     return "snippets/" + file + ".html";
-}
-
-function testAddSong(id, title) {
-  var tableItem = "<tr id='" + id + "' onclick='onSongClick(\"" + id + "\");' data-long-press-delay='500'><td>" + title + "</td></tr>";
-
-  getElement("all-songs").innerHTML += tableItem;
-  localStorage.setItem("elton-songs", getElement("all-songs").innerHTML);
-  localStorage.setItem("elton-songs", localStorage.getItem("elton-songs").trim());
-} 
-
-function testAddSongs() {
-  for (var i = 0; i < 15; i++) {
-    testAddSong("test" + i, "Test" + i);
-  }
 }
 
 function getElement(id) {

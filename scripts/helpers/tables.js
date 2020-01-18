@@ -16,31 +16,32 @@ function addButtonDone() {
         url = null;      
     }
   } else {
-    if (localStorage.getItem("elton-songs") === null) {
-      localStorage.setItem("elton-songs", "");
-    }
-  
-    var title = getElement("input-song-name").value;
-    var id = title.toLowerCase().replace(/\ /g, "-").replace("'", "");
-
-    console.log(title + " : " + id);
-  
-    var tableItem = "<tr id='" + id + "' onclick='onSongClick(\"" + id + "\");' data-long-press-delay='300'><td>" + title + "</td></tr>";
-  
-    if (localStorage.getItem("elton-songs").indexOf(id) < 0) {
-      getElement("all-songs").innerHTML += tableItem;
-      localStorage.setItem("elton-songs", getElement("all-songs").innerHTML);
-      localStorage.setItem("elton-songs", localStorage.getItem("elton-songs").trim());
-  
-      addEvent(getElement(id), "elton-songs");
-    } else {
-      alert("A song with that ID already exists");
-    }
+    addSong(getElement("input-song-name").value);
   }
 
   closePopup();
   addSongEvents();
 }
+
+function addSong(title) {
+  if (localStorage.getItem("elton-songs") === null) {
+    localStorage.setItem("elton-songs", "");
+  }
+
+  var id = title.toLowerCase().replace(/\ /g, "-").replace("'", "");
+
+  var tableItem = "<tr id='" + id + "' onclick='onSongClick(\"" + id + "\");' data-long-press-delay='300'><td>" + title + "</td></tr>";
+
+  if (localStorage.getItem("elton-songs").indexOf(id) < 0) {
+    getElement("all-songs").innerHTML += tableItem;
+    localStorage.setItem("elton-songs", getElement("all-songs").innerHTML);
+    localStorage.setItem("elton-songs", localStorage.getItem("elton-songs").trim());
+
+    addEvent(getElement(id), "elton-songs");
+  } else {
+    alert("A song with that ID already exists");
+  }
+} 
 
 function createVideoElement() {
   var tableItem = "<tr id='" + videoId + "' onclick='onVideoClick(\"" + videoId + "\")' data-long-press-delay='300'><td>" + getVideoTitle() + "</td></tr>";

@@ -1,0 +1,23 @@
+#button-add {
+  display: block;
+  position: absolute;
+  bottom: 7px; right: 9px;
+}
+
+#button-save {
+  display: none;
+  position: absolute;
+  bottom: 7px; right: 9px;
+}
+
+#button-back {
+  display: none;
+  position: absolute;
+  bottom: 7px; left: 9px;
+}
+
+#button-debug {
+  display: block;
+  position: absolute;
+  bottom: 7px; left: 9px;
+}
