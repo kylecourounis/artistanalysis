@@ -36,17 +36,17 @@ a {
   display: block;
 }
 
-#video-container {
-  display: none;
-  padding: 10px;
-}
-
 #videos {
   display: none;
 }
 
 #videos-list {
   display: none;
+}
+
+#video-container {
+  display: none;
+  padding: 10px;
 }
 
 #notes-section {

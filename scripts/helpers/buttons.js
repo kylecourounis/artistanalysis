@@ -4,7 +4,11 @@ function addButtonClick() {
   setTimeout(function () {
     getElement("loader").style.display = "none";
 
-    if (getElement("videos").style.display === "block" && getElement("songs").style.display === "none") {
+    if (getElement("artists").style.display === "block") {
+      getElement("popup-container").innerHTML = getSnippet("add-artist");
+    } else if (getElement("categories").style.display === "block") {
+      getElement("popup-container").innerHTML = getSnippet("add-category");
+    } else if (getElement("videos").style.display === "block" && getElement("songs").style.display === "none") {
       getElement("popup-container").innerHTML = getSnippet("add-video");
     } else {
       getElement("popup-container").innerHTML = getSnippet("add-song");
@@ -13,19 +17,56 @@ function addButtonClick() {
 }
 
 function backButtonClick() {
-  if (getElement("videos").style.display === "block") {
+  if (getElement("categories").style.display === "block") {
+    getElement("categories").style.display = "none";
+    getElement("button-back").style.display = "none";
+
+    getElement("button-debug").style.display = "block";
+    getElement("artists").style.display = "block";
+
+    // console.log("Back Clicked ('categories' = block)");
+  } else if (getElement("songs").style.display === "block") {
+    getElement("songs").style.display = "none";
+    getElement("videos-list").style.display = "none";
+    getElement("button-save").style.display = "none";
+    
+    getElement("button-back").style.display = "block";
+    getElement("button-add").style.display = "block";
+    getElement("categories").style.display = "block";
+
+    // console.log("Back Clicked ('songs' = block)");
+  } else if (getElement("videos").style.display === "block") {
     getElement("videos").style.display = "none";
     getElement("videos-list").style.display = "none";
-    getElement("button-back").style.display = "none";
-    getElement("button-debug").style.display = "block";
+    getElement("button-debug").style.display = "none";
+
+    getElement("button-back").style.display = "block";
     getElement("songs").style.display = "block";
-  } else if (getElement("video-container").style.display === "block") {
+    getElement("songs-list").style.display = "inline-table";
+
+    // console.log("Back Clicked ('videos' = block)");
+  } else if (getElement("video-container").style.display === "block" && getElement("videos").innerHTML === '<table class="custom-tbl" id="videos-list" width="100%"></table>') {
     getElement("video-container").innerHTML = "";
+
     getElement("video-container").style.display = "none";
     getElement("button-save").style.display = "none";
+
+    getElement("button-add").style.display = "block";
+    getElement("songs").style.display = "block";
+    getElement("songs-list").style.display = "inline-table";
+
+    // console.log("Back Clicked ('video-container' = block & innerHTML empty)");
+  } else if (getElement("video-container").style.display === "block") {
+    getElement("video-container").innerHTML = "";
+
+    getElement("video-container").style.display = "none";
+    getElement("button-save").style.display = "none";
+
     getElement("button-add").style.display = "block";
     getElement("videos").style.display = "block";
     getElement("videos-list").style.display = "inline-table";
+
+    // console.log("Back Clicked ('video-container' = block)");
   }
 }
 
@@ -41,10 +82,12 @@ function debugButtonClick() {
 function saveButtonClick() {
   getElement("loader").style.display = "block";
 
-  var notes = getElement("notes-section").value;
-  localStorage.setItem(videoId + "-notes", notes);
-
-  hideLoader();
+  setTimeout(function () {
+    getElement("loader").style.display = "none";
+    
+    var notes = getElement("notes-section").value;
+    localStorage.setItem(videoId + "-notes", notes);
+  }, 400);
 }
 
 function closePopup() {

@@ -19,7 +19,6 @@
 </head>
 <body>
   <div id="glow" style="position:absolute;display:none;z-index:100;background:url('./assets/images/glow.png') center center no-repeat; width:80px; height:80px;"></div>
-
   <div id="loader"></div>
 
   <center>
@@ -34,15 +33,21 @@
     </div>
   </center>
 
-  <div id="wrapper">    
-    <div id="songs">
-      <table class="custom-tbl" id="all-songs" width="100%">
-      </table>
+  <div id="wrapper">
+    <div id="artists" style="display: block;">
+      <table class="custom-tbl" id="artists-list" width="100%"></table>
+    </div>
+
+    <div id="categories" style="display: none;">
+      <table class="custom-tbl" id="categories-list" width="100%"></table>
+    </div>
+
+    <div id="songs" style="display: none;">
+      <table class="custom-tbl" id="songs-list" width="100%"></table>
     </div>
 
     <div id="videos" style="display: none;">
-      <table class="custom-tbl" id="videos-list" width="100%">
-      </table>
+      <table class="custom-tbl" id="videos-list" width="100%"></table>
     </div>
 
     <div id="video-container" style="display: none;"></div>

@@ -1,22 +1,25 @@
-
-
-
 function addButtonDone() {
   getElement("loader").style.display = "block";
 
   setTimeout(function () {
-    if (getElement("videos").style.display === "block" && getElement("songs").style.display === "none") {
+    if (getElement("artists").style.display === "block") {
+      var artistName = getElement("input-artist-name").value;
+      addArtist(artistName);
+    } else if (getElement("categories").style.display === "block") {
+      var categoryName = getElement("input-category-name").value;
+      addCategory(categoryName);
+    } else if (getElement("videos").style.display === "block") {
       var url = getElement("input-yt-url").value.replace("http://").replace("https://");
       
       if (url.indexOf("?") >= 0) {
         videoId = url.substr(url.indexOf("v=") + 2);
-        createVideoElement();
+        createVideoElement("videos", "song");
       } else if (url.indexOf("youtu.be") >= 0) {
         videoId = url.substr(url.indexOf("/") + 1);
-        createVideoElement();
+        createVideoElement("videos", "song");
       } else {
-          alert("Invalid YouTube URL!");
-          url = null;      
+        alert("Invalid YouTube URL!");
+        url = null;      
       }
     } else {
       var title = getElement("input-song-name").value;
@@ -26,7 +29,7 @@ function addButtonDone() {
       } else {
         var playlistId;
         
-        if (title.indexOf("?") >= 0) {
+        if (title.indexOf("?list=") >= 0) {
           playlistId = title.substr(title.indexOf("list=") + 5);
           var playlist = getPlaylist(playlistId);
 
@@ -34,23 +37,74 @@ function addButtonDone() {
 
           for (var i in playlist) {
             videoId = playlist[i];
-            createVideoElement();
+            createVideoElement("videos", "song");
+          }
+        } else if (title.indexOf("?v=") >= 0) {
+          var url = title.replace("http://").replace("https://");
+      
+          if (url.indexOf("?") >= 0) {
+            videoId = url.substr(url.indexOf("v=") + 2);
+            createVideoElement("songs", "category");
+          } else if (url.indexOf("youtu.be") >= 0) {
+            videoId = url.substr(url.indexOf("/") + 1);
+            createVideoElement("songs", "category");
+          } else {
+            alert("Invalid YouTube video URL!");
+            url = null;
           }
         } else {
-            alert("Invalid playlist URL!");
-            playlistId = null;
+          alert("Invalid YouTube playlist URL!");
+          playlistId = null;
         }
       }
     }
 
     closePopup();
-    addSongEvents();
+    addEvents();
   }, 500);
 }
 
+function addArtist(name) {
+  if (localStorage.getItem("artists") === null) {
+    localStorage.setItem("artists", "");
+  }
+
+  var id = name.toLowerCase().replace(/\ /g, "-").replace("'", "");
+
+  var tableItem = "<tr id='" + id + "' onclick='onArtistClick(\"" + id + "\");' data-long-press-delay='300'><td>" + name + "</td></tr>";
+
+  if (localStorage.getItem("artists").indexOf(id) < 0) {
+    getElement("artists-list").innerHTML += tableItem;
+    localStorage.setItem("artists", getElement("artists").innerHTML.trim());
+
+    addEvent(getElement(id), "artists");
+  } else {
+    alert("An artist with that ID already exists");
+  }
+} 
+
+function addCategory(name) {
+  if (localStorage.getItem(artist + "-categories") === null) {
+    localStorage.setItem(artist + "-categories", "");
+  }
+
+  var id = name.toLowerCase().replace(/\ /g, "-").replace("'", "");
+
+  var tableItem = "<tr id='" + id + "' onclick='onCategoryClick(\"" + id + "\");' data-long-press-delay='300'><td>" + name + "</td></tr>";
+
+  if (localStorage.getItem("artists").indexOf(id) < 0) {
+    getElement("categories-list").innerHTML += tableItem;
+    localStorage.setItem(artist + "-categories", getElement("categories").innerHTML.trim());
+
+    addEvent(getElement(id), artist + "-categories");
+  } else {
+    alert("A category with that ID already exists");
+  }
+} 
+
 function addSong(title) {
-  if (localStorage.getItem("elton-songs") === null) {
-    localStorage.setItem("elton-songs", "");
+  if (localStorage.getItem(artist + "-" + category) === null) {
+    localStorage.setItem(artist + "-" + category, "");
   }
 
   var id = title.toLowerCase().replace(/\ /g, "-").replace("'", "");
@@ -58,37 +112,37 @@ function addSong(title) {
 
   var tableItem = "<tr id='" + id + "' onclick='onSongClick(\"" + id + "\");' data-long-press-delay='300'><td>" + title + "</td></tr>";
 
-  if (localStorage.getItem("elton-songs").indexOf(id) < 0) {
-    getElement("all-songs").innerHTML += tableItem;
-    localStorage.setItem("elton-songs", getElement("all-songs").innerHTML);
-    localStorage.setItem("elton-songs", localStorage.getItem("elton-songs").trim());
+  if (localStorage.getItem(artist + "-" + category).indexOf(id) < 0) {
+    getElement("songs-list").innerHTML += tableItem;
+    localStorage.setItem(artist + "-" + category, getElement("songs-list").innerHTML.trim());
 
-    addEvent(getElement(id), "elton-songs");
+    addEvent(getElement(id), artist + "-" + category);
   } else {
     alert("A song with that ID already exists");
   }
 } 
 
-function createVideoElement() {
+function createVideoElement(id, type) {
+  if (type === "category") {
+    storage = artist + "-" + category;
+  } else if (type === "song") {
+    storage = artist + "-" + song;
+  }
+
   var tableItem = "<tr id='" + videoId + "' onclick='onVideoClick(\"" + videoId + "\")' data-long-press-delay='300'><td>" + getVideoTitle() + "</td></tr>";
 
-  getElement("videos").getElementsByTagName("table")[0].innerHTML += tableItem;
-  localStorage.setItem("elton-" + song, getElement("videos").getElementsByTagName("table")[0].innerHTML);
-  localStorage.setItem("elton-" + song, localStorage.getItem("elton-" + song).trim());
+  getElement(id).getElementsByTagName("table")[0].innerHTML += tableItem;
+  localStorage.setItem(storage, getElement(id).getElementsByTagName("table")[0].innerHTML.trim());
 
-  addEvent(getElement(videoId), "elton-" + song);
+  console.log(storage);
+
+  addEvent(getElement(videoId), storage);
 }
 
 function deleteTableItem() {
-  localStorage.setItem(storage, localStorage.getItem(storage).replace("<tbody>" + tableItem.outerHTML + "</tbody>", ""));
-  localStorage.setItem(storage, localStorage.getItem(storage).trim());
-  
-  if (storage === "elton-songs") {
-    getElement("all-songs").innerHTML = localStorage.getItem(storage);
-  } else {
-    getElement(tableItem.parentElement.parentElement.id).innerHTML = localStorage.getItem(storage);
-  }
+  localStorage.setItem(storage, localStorage.getItem(storage).replace("<tbody>" + tableItem.outerHTML + "</tbody>", "").trim());
+  getElement(tableItem.parentElement.parentElement.id).innerHTML = localStorage.getItem(storage);
 
   closePopup();
-  addSongEvents();
+  addEvents();
 }

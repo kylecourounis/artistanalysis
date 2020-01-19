@@ -6,5 +6,8 @@ function testAddSongs() {
 
 function clearData() {
   localStorage.clear();
-  getElement("all-songs").innerHTML = localStorage.getItem("elton-songs");
+
+  getElement("artists-list").innerHTML = localStorage.getItem("artists");
+  getElement("categories-list").innerHTML = localStorage.getItem("categories");
+  getElement("songs-list").innerHTML = localStorage.getItem("elton");
 }
