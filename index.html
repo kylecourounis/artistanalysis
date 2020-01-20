@@ -20,6 +20,10 @@
 <body>
   <div id="glow" style="position:absolute;display:none;z-index:100;background:url('./assets/images/glow.png') center center no-repeat; width:80px; height:80px;"></div>
 
+  <div class="loader-container">
+    <div id="loader"></div>
+  </div>
+  
   <center>
     <div class="header-container">
       <div class="header">
@@ -41,21 +45,17 @@
       <table class="custom-tbl" id="categories-list" width="100%"></table>
     </div>
 
-    <div id="songs" style="display: none;">
+    <div id="songs-div" style="display: none;">
       <table class="custom-tbl" id="songs-list" width="100%"></table>
     </div>
 
-    <div id="videos" style="display: none;">
+    <div id="videos-div" style="display: none;">
       <table class="custom-tbl" id="videos-list" width="100%"></table>
     </div>
 
     <div id="video-container" style="display: none;"></div>
 
     <div id="popup-container"></div>
-    
-    <div class="loader-container">
-      <div id="loader"></div>
-    </div>
   </div>
 
   <script type="text/javascript" src="scripts/helpers/html.js"></script>

@@ -23,25 +23,24 @@ a {
 }
 
 .loader-container {
-  align-items: center; align-self: center; align-content: center;
-  margin: 180px 0px 0px auto;
+  margin: 180px auto auto auto;
 }
 
 #loader {
-  display: none;
+  display: none; position: fixed;
+  align-items: center; align-self: center; align-content: center;
   width: 100px; height: 50px;
-  margin: auto;
   background: url("../images/loader.gif") no-repeat center center rgba(0,0,0,0.85);
   border-radius: 10px;
   -webkit-border-radius: 10px;
   z-index: 10;
 }
 
-#songs {
+#songs-div {
   display: block;
 }
 
-#videos {
+#videos-div {
   display: none;
 }
 

@@ -8,19 +8,9 @@ function addButtonDone() {
     } else if (getElement("categories").style.display === "block") {
       var categoryName = getElement("input-category-name").value;
       addCategory(categoryName);
-    } else if (getElement("videos").style.display === "block") {
-      var url = getElement("input-yt-url").value.replace("http://").replace("https://");
-      
-      if (url.indexOf("?") >= 0) {
-        videoId = url.substr(url.indexOf("v=") + 2);
-        createVideoElement("videos", "song");
-      } else if (url.indexOf("youtu.be") >= 0) {
-        videoId = url.substr(url.indexOf("/") + 1);
-        createVideoElement("videos", "song");
-      } else {
-        alert("Invalid YouTube URL!");
-        url = null;      
-      }
+    } else if (getElement("videos-div").style.display === "block") {
+      var url = getElement("input-yt-url").value;
+      getVideo(url, "videos", "song");
     } else {
       var title = getElement("input-song-name").value;
       
@@ -37,21 +27,10 @@ function addButtonDone() {
 
           for (var i in playlist) {
             videoId = playlist[i];
-            createVideoElement("videos", "song");
+            createVideoElement("videos-list", "song");
           }
         } else if (title.indexOf("?v=") >= 0) {
-          var url = title.replace("http://").replace("https://");
-      
-          if (url.indexOf("?") >= 0) {
-            videoId = url.substr(url.indexOf("v=") + 2);
-            createVideoElement("songs", "category");
-          } else if (url.indexOf("youtu.be") >= 0) {
-            videoId = url.substr(url.indexOf("/") + 1);
-            createVideoElement("songs", "category");
-          } else {
-            alert("Invalid YouTube video URL!");
-            url = null;
-          }
+          getVideo(title, "songs", "category");
         } else {
           alert("Invalid YouTube playlist URL!");
           playlistId = null;
@@ -131,8 +110,8 @@ function createVideoElement(id, type) {
 
   var tableItem = "<tr id='" + videoId + "' onclick='onVideoClick(\"" + videoId + "\")' data-long-press-delay='300'><td>" + getVideoTitle() + "</td></tr>";
 
-  getElement(id).getElementsByTagName("table")[0].innerHTML += tableItem;
-  localStorage.setItem(storage, getElement(id).getElementsByTagName("table")[0].innerHTML.trim());
+  getElement(id).innerHTML += tableItem;
+  localStorage.setItem(storage, getElement(id).innerHTML.trim());
 
   console.log(storage);
 
@@ -140,6 +119,8 @@ function createVideoElement(id, type) {
 }
 
 function deleteTableItem() {
+  console.log(storage);
+
   localStorage.setItem(storage, localStorage.getItem(storage).replace("<tbody>" + tableItem.outerHTML + "</tbody>", "").trim());
   getElement(tableItem.parentElement.parentElement.id).innerHTML = localStorage.getItem(storage);
 

@@ -31,6 +31,7 @@ $(document).ready(function () {
 
 function onArtistClick(name) {
   artist = name;
+  storage = name + "-categories";
 
   window.scrollTo(0, 0);
 
@@ -69,7 +70,7 @@ function onCategoryClick(name) {
     getElement("loader").style.display = "none";
 
     getElement("categories").style.display = "none";
-    getElement("songs").style.display = "block";
+    getElement("songs-div").style.display = "block";
     
     getElement("button-back").style.display = "block";
     getElement("button-add").style.display = "block";
@@ -87,7 +88,7 @@ function onCategoryClick(name) {
 
 function onSongClick(name) {
   song = name;
-  storage = artist + "-" + song;
+  storage = artist + "-" + name;
 
   window.scrollTo(0, 0);
 
@@ -96,11 +97,11 @@ function onSongClick(name) {
   setTimeout(function () {
     getElement("loader").style.display = "none";
 
-    getElement("songs").style.display = "none";
+    getElement("songs-div").style.display = "none";
     
     getElement("button-back").style.display = "block";
     getElement("button-add").style.display = "block";
-    getElement("videos").style.display = "block";
+    getElement("videos-div").style.display = "block";
     getElement("videos-list").style.display = "inline-table";
     
     if (localStorage.getItem(storage) === null) {
@@ -116,6 +117,7 @@ function onSongClick(name) {
 
 function onVideoClick(id) {
   videoId = id;
+  
 
   window.scrollTo(0, 0);
 
@@ -128,11 +130,11 @@ function onVideoClick(id) {
     getElement("button-back").style.display = "block";
     getElement("button-save").style.display = "block";
     
-    if (getElement("videos").style.display === "none") {
-      getElement("songs").style.display = "none";
-      getElement("videos").innerHTML = '<table class="custom-tbl" id="videos-list" width="100%"></table>';
+    if (getElement("videos-div").style.display === "none") {
+      getElement("songs-div").style.display = "none";
+      getElement("videos-div").innerHTML = '<table class="custom-tbl" id="videos-list" width="100%"></table>';
     } else {
-      getElement("videos").style.display = "none";
+      getElement("videos-div").style.display = "none";
       getElement("videos-list").style.display = "none";
     }
 
@@ -158,7 +160,6 @@ function addEvents() {
 
   rows = document.getElementById("categories-list").rows;
   for (var i = 0; i < rows.length; i++) {
-    
     addEvent(rows[i], storage);
   }
 
@@ -169,13 +170,9 @@ function addEvents() {
 }
 
 function addVideoEvents() {
-  var videos = getElement("videos-list").getElementsByTagName("tr");
-
-  if (videos.length > 0) {
-    for (var idx in videos) {
-      var item = getElement(videos.item(idx).id);
-      addEvent(item, storage);
-    }
+  var rows = getElement("videos-list").rows;
+  for (var i = 0; i < rows.length; i++) {
+    addEvent(rows[i], storage);
   }
 }
 

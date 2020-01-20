@@ -2,6 +2,27 @@ var ytApiKey = "AIzaSyCqBSwFmhWAS04CfvTuwWJPlf7Hquq8LFE";
 
 var playlistName;
 
+// https://www.youtube.com/watch?v=jmd9HLuErgI&list=PL-hve6gMGjsnAvWCPZdxoEaJfBJGzswJ2&index=25&t=0s
+
+function getVideo(url, div, type) {
+  url = url.replace("http://").replace("https://");
+      
+  if (url.indexOf("?") >= 0) {
+    if (url.indexOf("&list") >= 0) {
+      url = url.substr(0, url.indexOf("&list"));
+    }
+    
+    videoId = url.substr(url.indexOf("v=") + 2);
+    createVideoElement(div + "-list", type);
+  } else if (url.indexOf("youtu.be") >= 0) {
+    videoId = url.substr(url.indexOf("/") + 1);
+    createVideoElement(div + "-list", type);
+  } else {
+    alert("Invalid YouTube URL!");
+    url = null;      
+  }
+}
+
 function getVideoTitle() {
   var result = null;
 
