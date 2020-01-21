@@ -15,7 +15,7 @@ a {
   font-family: Helvetica, Arial; font-size: 20px;
 }
 
-.custom-tbl th, td {
+.custom-tbl th, .custom-tbl td {
   padding: 15px;
   border-bottom: 1px solid #ddd;
   text-align: left;
@@ -23,13 +23,14 @@ a {
 }
 
 .loader-container {
-  margin: 180px auto auto auto;
+  /* margin: 180px auto auto auto; */
 }
 
 #loader {
   display: none; position: fixed;
   align-items: center; align-self: center; align-content: center;
   width: 100px; height: 50px;
+  top: 38%; left: 38%;
   background: url("../images/loader.gif") no-repeat center center rgba(0,0,0,0.85);
   border-radius: 10px;
   -webkit-border-radius: 10px;
