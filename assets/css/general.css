@@ -66,6 +66,10 @@ a {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 15px;
 }
 
+#notes-section:focus {
+  border: 3px solid #555;
+}
+
 input[type=text] {
   width: 80%;
   padding: 12px 20px;
