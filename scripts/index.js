@@ -180,6 +180,7 @@ function addEvent(t, s) {
   storage = s;
 
   t.addEventListener("long-press", function (e) {
+    toggleDark();
     tableItem = t;
     getElement("popup-container").innerHTML = getSnippet("confirm-delete");
   });

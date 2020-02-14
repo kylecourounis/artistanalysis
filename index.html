@@ -24,8 +24,12 @@
   </div>
   <div id="loader"></div>
   
-  <div class="header-container">
-    <div class="header">
+  <div id="popup-container"></div>
+
+  <div id="darken"></div>
+  
+  <div id="header">
+    <div id="header">
       <img id="button-back" src="assets/images/back.png" ontouchstart="glow('button-back');" ontouchend="noGlow();" onclick="backButtonClick()" />
       <img id="button-debug" src="assets/images/settings.png" ontouchstart="glow('button-debug');" ontouchend="noGlow();" onclick="debugButtonClick()" />
       Song Analysis
@@ -33,7 +37,7 @@
       <img id="button-save" src="assets/images/save.png" ontouchstart="glow('button-save');" ontouchend="noGlow();" onclick="saveButtonClick()" />
     </div>
   </div>
-
+  
   <div id="wrapper">
     <div id="artists" style="display: block;">
       <table class="custom-tbl" id="artists-list" width="100%"></table>
@@ -52,8 +56,6 @@
     </div>
 
     <div id="video-container" style="display: none;"></div>
-
-    <div id="popup-container"></div>
   </div>
 
   <script type="text/javascript" src="scripts/helpers/html.js"></script>

@@ -34,3 +34,15 @@ function createPath(file) {
 function getElement(id) {
   return document.getElementById(id);
 }
+
+function toggleDark() {
+  var darken = getElement("darken");
+
+  if (darken.style.display === "block") {
+    getElement("darken").style.display = "none";
+    getElement("header").style.zIndex = 2;
+  } else {
+    getElement("header").style.zIndex = -1;  
+    getElement("darken").style.display = "block";
+  }
+}

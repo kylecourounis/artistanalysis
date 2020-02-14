@@ -3,6 +3,7 @@ function addButtonClick() {
 
   setTimeout(function () {
     getElement("loader").style.display = "none";
+    toggleDark();
 
     if (getElement("artists").style.display === "block") {
       getElement("popup-container").innerHTML = getSnippet("add-artist");
@@ -83,6 +84,7 @@ function debugButtonClick() {
   setTimeout(function () {
     getElement("loader").style.display = "none";
     getElement("popup-container").innerHTML = getSnippet("debug-menu");
+    toggleDark();
   }, 400);
 }
 
@@ -100,6 +102,7 @@ function saveButtonClick() {
 function closePopup() {
   getElement("popup-container").innerHTML = "";
   getElement("loader").style.display = "none";
+  toggleDark();
 }
 
 function glow(where) {
