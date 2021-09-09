@@ -33,6 +33,8 @@ function onArtistClick(name) {
   artist = name;
   storage = name + "-categories";
 
+  getElement("header-txt").innerText = getElement(name).innerText;
+
   window.scrollTo(0, 0);
 
   getElement("loader").style.display = "block";
@@ -62,6 +64,8 @@ function onCategoryClick(name) {
   category = name;
   storage = artist + "-" + category;
 
+  getElement("header-txt").innerText = getElement(name).innerText;
+
   window.scrollTo(0, 0);
 
   getElement("loader").style.display = "block";
@@ -89,6 +93,8 @@ function onCategoryClick(name) {
 function onSongClick(name) {
   song = name;
   storage = artist + "-" + name;
+
+  getElement("header-txt").innerText = "Videos";
 
   window.scrollTo(0, 0);
 
@@ -146,7 +152,7 @@ function onVideoClick(id) {
 
     var notes = localStorage.getItem(id + "-notes");
 
-    getElement("video-container").innerHTML = "<iframe width=\'390\' height=\'315\' src='https\:/\/www.youtube.com/embed/" + id + "/frameborder=\'0\' allow=\'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\' allowfullscreen></iframe><br /><br/><center><textarea id='notes-section' rows='10' cols='53'>" + notes + "</textarea>";
+    getElement("video-container").innerHTML = "<br/><br/></br><iframe width=\'390\' height=\'315\' src='https\:/\/www.youtube.com/embed/" + id + "/frameborder=\'0\' allow=\'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\' allowfullscreen></iframe><br /><br/><center><textarea id='notes-section' rows='10' cols='53'>" + notes + "</textarea>";
 
     addVideoEvents();
   }, 500);

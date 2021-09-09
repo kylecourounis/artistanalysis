@@ -25,6 +25,8 @@ function backButtonClick() {
     getElement("button-debug").style.display = "block";
     getElement("artists").style.display = "block";
 
+    getElement("header-txt").innerText = "Artists";
+
     storage = "artists";
     // console.log("Back Clicked ('categories' = block)");
   } else if (getElement("songs-div").style.display === "block") {
@@ -36,6 +38,8 @@ function backButtonClick() {
     getElement("button-add").style.display = "block";
     getElement("categories").style.display = "block";
 
+    getElement("header-txt").innerText = getElement(artist).innerText;
+
     storage = artist + "-categories";
     // console.log("Back Clicked ('songs' = block)");
   } else if (getElement("videos-div").style.display === "block") {
@@ -46,6 +50,8 @@ function backButtonClick() {
     getElement("button-back").style.display = "block";
     getElement("songs-div").style.display = "block";
     getElement("songs-list").style.display = "inline-table";
+
+    getElement("header-txt").innerText = getElement(category).innerText;
 
     storage = artist + "-" + category;
     // console.log("Back Clicked ('videos' = block)");
@@ -59,6 +65,8 @@ function backButtonClick() {
     getElement("songs-div").style.display = "block";
     getElement("songs-list").style.display = "inline-table";
 
+    getElement("header-txt").innerText = getElement(category).innerText;
+
     storage = artist + "-" + category;
     // console.log("Back Clicked ('video-container' = block & innerHTML empty)");
   } else if (getElement("video-container").style.display === "block") {
@@ -71,6 +79,8 @@ function backButtonClick() {
     getElement("videos-div").style.display = "block";
     getElement("videos-list").style.display = "inline-table";
 
+    getElement("header-txt").innerText = "Videos";
+    
     storage = artist + "-" + song;
     // console.log("Back Clicked ('video-container' = block)");
   }

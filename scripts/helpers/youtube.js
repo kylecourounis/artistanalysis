@@ -1,4 +1,4 @@
-var ytApiKey = "AIzaSyCqBSwFmhWAS04CfvTuwWJPlf7Hquq8LFE";
+var ytApiKey = "AIzaSyCy5fZy7crC9BG0cQqLeLnbWnH4dxwVrQ0";
 
 var playlistName;
 

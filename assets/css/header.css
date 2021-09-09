@@ -22,6 +22,9 @@
   text-align: center;
   background-image: linear-gradient(#001bf2, #02018e);
   color: white;
+}
+
+#header-txt {
   font-family: Helvetica;
   font-weight: 600;
   font-size: 23px;
