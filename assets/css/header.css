@@ -25,9 +25,14 @@
 }
 
 #header-txt {
+  position: absolute;
+  padding: 15px 0;
+  top: 0;
+  left: 156px;
+  right: 160px;
   font-family: Helvetica;
   font-weight: 600;
-  font-size: 23px;
+  font-size: 17px;
 }
 
 #header h1 {
