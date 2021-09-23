@@ -2,8 +2,6 @@ var ytApiKey = "AIzaSyCy5fZy7crC9BG0cQqLeLnbWnH4dxwVrQ0";
 
 var playlistName;
 
-// https://www.youtube.com/watch?v=jmd9HLuErgI&list=PL-hve6gMGjsnAvWCPZdxoEaJfBJGzswJ2&index=25&t=0s
-
 function getVideo(url, div, type) {
   url = url.replace("http://").replace("https://");
       
