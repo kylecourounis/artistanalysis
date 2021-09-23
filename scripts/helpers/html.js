@@ -49,10 +49,8 @@ function toggleDark() {
 
 function onTableItemPress(element) {
   getElement(element).style.background = "-webkit-gradient(linear, 0% 0%, 0% 100%, from(#09F), to(#06F));";
-  console.log(getElement(element).style.background);
 }
 
 function onTableItemRelease(element) {
 	getElement(element).style.background = "-webkit-gradient(linear, 0% 0%, 0% 100%, from(#ccc), to(#999));";
-  console.log(getElement(element).style.background);
 }

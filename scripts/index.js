@@ -151,7 +151,7 @@ function onVideoClick(id) {
 
     var notes = localStorage.getItem(id + "-notes");
 
-    getElement("video-container").innerHTML = "<br/><br/></br><iframe width=\'390\' height=\'315\' src='https\:/\/www.youtube.com/embed/" + id + "/frameborder=\'0\' allow=\'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\' allowfullscreen></iframe><br /><br/><center><textarea id='notes-section' rows='10' cols='53'>" + notes + "</textarea>";
+    getElement("video-container").innerHTML = "<br/><br/></br><iframe width=\'100%\' height=\'315\' src='https\:/\/www.youtube.com/embed/" + id + "/frameborder=\'0\' allow=\'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\' allowfullscreen></iframe><br /><br/><center><textarea id='notes-section' rows='10' cols='53'>" + notes + "</textarea>";
 
     addVideoEvents();
   }, 500);

@@ -89,7 +89,7 @@ function addSong(title) {
   var id = title.toLowerCase().replace(/\ /g, "-").replace("'", "");
   song = id;
 
-  var tableItem = "<tr id='" + id + "' onclick='onSongClick(\"" + id + "\");' data-long-press-delay='300' ontouchstart='onTableItemPress(\"" + id + "\")' ontouchend='onTableItemRelease(\"" + id + "\")'><td>" + name + "</td></tr>";
+  var tableItem = "<tr id='" + id + "' onclick='onSongClick(\"" + id + "\");' data-long-press-delay='300' ontouchstart='onTableItemPress(\"" + id + "\")' ontouchend='onTableItemRelease(\"" + id + "\")'><td>" + title + "</td></tr>";
 
   if (localStorage.getItem(artist + "-" + category).indexOf(id) < 0) {
     getElement("songs-list").innerHTML += tableItem;
@@ -113,13 +113,13 @@ function createVideoElement(id, type) {
   getElement(id).innerHTML += tableItem;
   localStorage.setItem(storage, getElement(id).innerHTML.trim());
 
-  console.log(storage);
+  // console.log(storage);
 
   addEvent(getElement(videoId), storage);
 }
 
 function deleteTableItem() {
-  console.log(storage);
+  // console.log(storage);
 
   localStorage.setItem(storage, localStorage.getItem(storage).replace("<tbody>" + tableItem.outerHTML + "</tbody>", "").trim());
   getElement(tableItem.parentElement.parentElement.id).innerHTML = localStorage.getItem(storage);
