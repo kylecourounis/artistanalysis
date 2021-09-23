@@ -85,7 +85,7 @@ function backButtonClick() {
     // console.log("Back Clicked ('video-container' = block)");
   }
 
-  console.log(storage);
+  // console.log(storage);
 }
 
 function debugButtonClick() {

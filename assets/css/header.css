@@ -25,11 +25,8 @@
 }
 
 #header-txt {
-  position: absolute;
-  padding: 15px 0;
-  top: 0;
-  left: 156px;
-  right: 160px;
+  position: sticky;
+  top: 15px;
   font-family: Helvetica;
   font-weight: 600;
   font-size: 17px;

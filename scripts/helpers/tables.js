@@ -50,7 +50,7 @@ function addArtist(name) {
 
   var id = name.toLowerCase().replace(/\ /g, "-").replace("'", "");
 
-  var tableItem = "<tr id='" + id + "' onclick='onArtistClick(\"" + id + "\");' data-long-press-delay='300'><td>" + name + "</td></tr>";
+  var tableItem = "<tr id='" + id + "' onclick='onArtistClick(\"" + id + "\");' data-long-press-delay='300' ontouchstart='onTableItemPress(\"" + id + "\")' ontouchend='onTableItemRelease(\"" + id + "\")'><td>" + name + "</td></tr>";
 
   if (localStorage.getItem("artists").indexOf(id) < 0) {
     getElement("artists-list").innerHTML += tableItem;
@@ -69,7 +69,7 @@ function addCategory(name) {
 
   var id = name.toLowerCase().replace(/\ /g, "-").replace("'", "");
 
-  var tableItem = "<tr id='" + id + "' onclick='onCategoryClick(\"" + id + "\");' data-long-press-delay='300'><td>" + name + "</td></tr>";
+  var tableItem = "<tr id='" + id + "' onclick='onCategoryClick(\"" + id + "\");' data-long-press-delay='300' ontouchstart='onTableItemPress('" + id + "')' ontouchend='onTableItemRelease('" + id + "')'><td>" + name + "</td></tr>";
 
   if (localStorage.getItem("artists").indexOf(id) < 0) {
     getElement("categories-list").innerHTML += tableItem;
@@ -89,7 +89,7 @@ function addSong(title) {
   var id = title.toLowerCase().replace(/\ /g, "-").replace("'", "");
   song = id;
 
-  var tableItem = "<tr id='" + id + "' onclick='onSongClick(\"" + id + "\");' data-long-press-delay='300'><td>" + title + "</td></tr>";
+  var tableItem = "<tr id='" + id + "' onclick='onSongClick(\"" + id + "\");' data-long-press-delay='300' ontouchstart='onTableItemPress(\"" + id + "\")' ontouchend='onTableItemRelease(\"" + id + "\")'><td>" + name + "</td></tr>";
 
   if (localStorage.getItem(artist + "-" + category).indexOf(id) < 0) {
     getElement("songs-list").innerHTML += tableItem;

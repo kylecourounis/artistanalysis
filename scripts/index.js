@@ -34,7 +34,7 @@ function onArtistClick(name) {
   storage = name + "-categories";
 
   getElement("header-txt").innerText = getElement(name).innerText;
-
+  
   window.scrollTo(0, 0);
 
   getElement("loader").style.display = "block";
@@ -116,7 +116,7 @@ function onSongClick(name) {
     } else {
       setHTML("#videos-list", localStorage.getItem(storage));
     }
-
+    
     addEvents();
   }, 500);
 }
@@ -124,7 +124,6 @@ function onSongClick(name) {
 function onVideoClick(id) {
   videoId = id;
   
-
   window.scrollTo(0, 0);
 
   getElement("loader").style.display = "block";

@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   overscroll-behavior-y: none;
+  background-color: #999;
 }
 
 a {
@@ -30,6 +31,7 @@ a {
 .custom-tbl th, .custom-tbl td {
   padding: 15px;
   border-bottom: 1px solid #ddd;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ccc), to(#999));
   text-align: left;
   font-family: Helvetica; font-size: 20px;
 }
