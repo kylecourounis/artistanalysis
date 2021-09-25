@@ -32,7 +32,9 @@ function getVideoTitle() {
     dataType: "json",
     async: false,
     success: function (data) {
-      result = (data.items[0].snippet.title);
+      if (data.items[0].snippet != null) {
+        result = (data.items[0].snippet.title);
+      }
     }
   });
 
@@ -43,8 +45,7 @@ function getPlaylist(playlistId) {
   var result = [];
 
   var playlist = "https://www.googleapis.com/youtube/v3/playlists?part=snippet%2Clocalizations&id=" + playlistId + "&fields=items(localizations%2Csnippet%2Flocalized%2Ftitle)&key=" + ytApiKey;
-  var token = (typeof token === "undefined") ? "" : `&pageToken=${token}`, url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${playlistId}&key=${ytApiKey}${token}`;
-
+  
   $.ajax({
     url: playlist,
     type: "get",
@@ -55,6 +56,14 @@ function getPlaylist(playlistId) {
     }
   });
 
+  result = makePlaylistRequest(result, playlistId, "");
+
+  return result;
+}
+
+function makePlaylistRequest(result, playlistId, token) {
+  var url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${playlistId}&key=${ytApiKey}&pageToken=${token}`;
+
   $.ajax({
     url: url,
     type: "get",
@@ -62,8 +71,14 @@ function getPlaylist(playlistId) {
     async: false,
     success: function (data) {
       for (var i in data.items) {
-        result[i] = data.items[i].snippet.resourceId.videoId;
+        result.push(data.items[i].snippet.resourceId.videoId);
       }
+
+      if (typeof data.nextPageToken !== "undefined") {
+        makePlaylistRequest(result, playlistId, data.nextPageToken);
+      } else if (typeof data.nextPageToken === "undefined" && typeof data.prevPageToken !== "undefined") {
+        makePlaylistRequest(result, playlistId, data.pageToken);
+      } 
     }
   });
 

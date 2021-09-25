@@ -45,12 +45,6 @@ function toggleDark() {
     getElement("header").style.zIndex = -1;  
     getElement("darken").style.display = "block";
   }
-}
 
-function onTableItemPress(element) {
-  getElement(element).style.background = "-webkit-gradient(linear, 0% 0%, 0% 100%, from(#09F), to(#06F));";
-}
-
-function onTableItemRelease(element) {
-	getElement(element).style.background = "-webkit-gradient(linear, 0% 0%, 0% 100%, from(#ccc), to(#999));";
+  return darken.style.display === "block";
 }

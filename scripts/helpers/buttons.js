@@ -28,7 +28,6 @@ function backButtonClick() {
     getElement("header-txt").innerText = "Artists";
 
     storage = "artists";
-    // console.log("Back Clicked ('categories' = block)");
   } else if (getElement("songs-div").style.display === "block") {
     getElement("songs-div").style.display = "none";
     getElement("videos-list").style.display = "none";
@@ -41,7 +40,6 @@ function backButtonClick() {
     getElement("header-txt").innerText = getElement(artist).innerText;
 
     storage = artist + "-categories";
-    // console.log("Back Clicked ('songs' = block)");
   } else if (getElement("videos-div").style.display === "block") {
     getElement("videos-div").style.display = "none";
     getElement("videos-list").style.display = "none";
@@ -54,21 +52,6 @@ function backButtonClick() {
     getElement("header-txt").innerText = getElement(category).innerText;
 
     storage = artist + "-" + category;
-    // console.log("Back Clicked ('videos' = block)");
-  } else if (getElement("video-container").style.display === "block" && getElement("videos-div").innerHTML === '<table class="custom-tbl" id="videos-list" width="100%"></table>') {
-    getElement("video-container").innerHTML = "";
-
-    getElement("video-container").style.display = "none";
-    getElement("button-save").style.display = "none";
-
-    getElement("button-add").style.display = "block";
-    getElement("songs-div").style.display = "block";
-    getElement("songs-list").style.display = "inline-table";
-
-    getElement("header-txt").innerText = getElement(category).innerText;
-
-    storage = artist + "-" + category;
-    // console.log("Back Clicked ('video-container' = block & innerHTML empty)");
   } else if (getElement("video-container").style.display === "block") {
     getElement("video-container").innerHTML = "";
 
@@ -82,10 +65,7 @@ function backButtonClick() {
     getElement("header-txt").innerText = "Videos";
     
     storage = artist + "-" + song;
-    // console.log("Back Clicked ('video-container' = block)");
   }
-
-  // console.log(storage);
 }
 
 function debugButtonClick() {
@@ -116,15 +96,15 @@ function closePopup() {
 }
 
 function glow(where) {
-	var offset = $("#" + where + "").offset();
-	var width = $("#" + where + "").width();
+  var offset = $("#" + where + "").offset();
+  var width = $("#" + where + "").width();
   getElement("glow").style.left = offset.left - ((80-width) / 2) + 'px';
   
-	var height = $("#" + where + "").height();
-	getElement("glow").style.top = offset.top - ((80-height) / 2) + 'px';
-	getElement("glow").style.display = "block";
+  var height = $("#" + where + "").height();
+  getElement("glow").style.top = offset.top - ((80-height) / 2) + 'px';
+  getElement("glow").style.display = "block";
 }
 
 function noGlow() {
-	getElement("glow").style.display = "none";
+  getElement("glow").style.display = "none";
 }

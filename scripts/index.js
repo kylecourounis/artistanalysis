@@ -185,8 +185,18 @@ function addEvent(t, s) {
   storage = s;
 
   t.addEventListener("long-press", function (e) {
-    toggleDark();
+    var isDark = toggleDark();
+
+    // While this might seem redundant/useless, it actually does makes the app more consistent and stable. 
+    if (!isDark) {
+      getElement("header").style.zIndex = -1;  
+      getElement("darken").style.display = "block";
+    }
+
     tableItem = t;
+    tableItem.children[0].className = "";
+
     getElement("popup-container").innerHTML = getSnippet("confirm-delete");
+
   });
 }

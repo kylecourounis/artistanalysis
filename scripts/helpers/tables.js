@@ -50,7 +50,7 @@ function addArtist(name) {
 
   var id = name.toLowerCase().replace(/\ /g, "-").replace("'", "");
 
-  var tableItem = "<tr id='" + id + "' onclick='onArtistClick(\"" + id + "\");' data-long-press-delay='300' ontouchstart='onTableItemPress(\"" + id + "\")' ontouchend='onTableItemRelease(\"" + id + "\")'><td>" + name + "</td></tr>";
+  var tableItem = "<tr id='" + id + "' onclick='onArtistClick(\"" + id + "\");' data-long-press-delay='600'><td ontouchstart=\"this.className='touched';\" ontouchend=\"this.className='';\" data-long-press-delay='600' class=''>" + name + "</td></tr>";
 
   if (localStorage.getItem("artists").indexOf(id) < 0) {
     getElement("artists-list").innerHTML += tableItem;
@@ -69,7 +69,7 @@ function addCategory(name) {
 
   var id = name.toLowerCase().replace(/\ /g, "-").replace("'", "");
 
-  var tableItem = "<tr id='" + id + "' onclick='onCategoryClick(\"" + id + "\");' data-long-press-delay='300' ontouchstart='onTableItemPress('" + id + "')' ontouchend='onTableItemRelease('" + id + "')'><td>" + name + "</td></tr>";
+  var tableItem = "<tr id='" + id + "' onclick='onCategoryClick(\"" + id + "\");' data-long-press-delay='600'><td ontouchstart=\"this.className='touched';\" ontouchend=\"this.className='';\" data-long-press-delay='600' class=''>" + name + "</td></tr>";
 
   if (localStorage.getItem("artists").indexOf(id) < 0) {
     getElement("categories-list").innerHTML += tableItem;
@@ -89,7 +89,7 @@ function addSong(title) {
   var id = title.toLowerCase().replace(/\ /g, "-").replace("'", "");
   song = id;
 
-  var tableItem = "<tr id='" + id + "' onclick='onSongClick(\"" + id + "\");' data-long-press-delay='300' ontouchstart='onTableItemPress(\"" + id + "\")' ontouchend='onTableItemRelease(\"" + id + "\")'><td>" + title + "</td></tr>";
+  var tableItem = "<tr id='" + id + "' onclick='onSongClick(\"" + id + "\");' data-long-press-delay='600'><td ontouchstart=\"this.className='touched';\" ontouchend=\"this.className='';\" data-long-press-delay='600' class=''>" + title + "</td></tr>";
 
   if (localStorage.getItem(artist + "-" + category).indexOf(id) < 0) {
     getElement("songs-list").innerHTML += tableItem;
@@ -108,21 +108,23 @@ function createVideoElement(id, type) {
     storage = artist + "-" + song;
   }
 
-  var tableItem = "<tr id='" + videoId + "' onclick='onVideoClick(\"" + videoId + "\")' data-long-press-delay='300'><td>" + getVideoTitle() + "</td></tr>";
+  var videoTitle = getVideoTitle();
 
-  getElement(id).innerHTML += tableItem;
-  localStorage.setItem(storage, getElement(id).innerHTML.trim());
+  if (videoTitle !== null) {
+    var tableItem = "<tr id='" + videoId + "' onclick='onVideoClick(\"" + videoId + "\")' data-long-press-delay='600'><td ontouchstart=\"this.className='touched';\" ontouchend=\"this.className='';\" data-long-press-delay='600' class=''>" + videoTitle + "</td></tr>";
+    getElement(id).innerHTML += tableItem;
 
-  // console.log(storage);
+    localStorage.setItem(storage, getElement(id).innerHTML.trim());
 
-  addEvent(getElement(videoId), storage);
+    addEvent(getElement(videoId), storage);
+  }
 }
 
-function deleteTableItem() {
-  // console.log(storage);
-
-  localStorage.setItem(storage, localStorage.getItem(storage).replace("<tbody>" + tableItem.outerHTML + "</tbody>", "").trim());
+function deleteTableItem() {  
+  localStorage.setItem(storage, localStorage.getItem(storage).replace(tableItem.outerHTML, "").trim());
   getElement(tableItem.parentElement.parentElement.id).innerHTML = localStorage.getItem(storage);
+
+  localStorage.removeItem(artist + "-" + tableItem.id);
 
   closePopup();
   addEvents();

@@ -1,0 +1,31 @@
+.custom-tbl {
+    display: inline-table; position: absolute; border-collapse: collapse;
+    width: 100%;
+    margin-top: 50px;
+    font-family: Helvetica, Arial; font-size: 20px;
+    background-color: #f5f5f5;
+  }
+  
+  .custom-tbl th, .custom-tbl td {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ccc), to(#999));
+    text-align: left;
+    font-family: Helvetica; font-size: 20px;
+  }
+  
+  .custom-tbl tr .touched {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#09F), to(#06F));
+    text-align: left;
+    font-family: Helvetica; font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .custom-tbl td .pointer {
+    font-family: Courier; font-size: 24px; font-weight: bold;
+    color: #666;
+    text-shadow: 0 1px 0 #dedede;
+  }
+  
