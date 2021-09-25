@@ -24,6 +24,8 @@
   }
   
   .custom-tbl td .pointer {
+    position: absolute;
+    top: 14px; right: 13px;    
     font-family: Courier; font-size: 24px; font-weight: bold;
     color: #666;
     text-shadow: 0 1px 0 #dedede;

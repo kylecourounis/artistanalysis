@@ -50,7 +50,7 @@ function addArtist(name) {
 
   var id = name.toLowerCase().replace(/\ /g, "-").replace("'", "");
 
-  var tableItem = "<tr id='" + id + "' onclick='onArtistClick(\"" + id + "\");' data-long-press-delay='600'><td ontouchstart=\"this.className='touched';\" ontouchend=\"this.className='';\" data-long-press-delay='600' class=''>" + name + "</td></tr>";
+  var tableItem = "<tr id='" + id + "' onclick='onArtistClick(\"" + id + "\");' data-long-press-delay='600'><td ontouchstart=\"this.className='touched';\" ontouchend=\"this.className='';\" data-long-press-delay='600' class=''>" + name + "<div class='pointer'>></div></td></tr>";
 
   if (localStorage.getItem("artists").indexOf(id) < 0) {
     getElement("artists-list").innerHTML += tableItem;
@@ -69,7 +69,7 @@ function addCategory(name) {
 
   var id = name.toLowerCase().replace(/\ /g, "-").replace("'", "");
 
-  var tableItem = "<tr id='" + id + "' onclick='onCategoryClick(\"" + id + "\");' data-long-press-delay='600'><td ontouchstart=\"this.className='touched';\" ontouchend=\"this.className='';\" data-long-press-delay='600' class=''>" + name + "</td></tr>";
+  var tableItem = "<tr id='" + id + "' onclick='onCategoryClick(\"" + id + "\");' data-long-press-delay='600'><td ontouchstart=\"this.className='touched';\" ontouchend=\"this.className='';\" data-long-press-delay='600' class=''>" + name + "<div class='pointer'>></div></td></tr>";
 
   if (localStorage.getItem("artists").indexOf(id) < 0) {
     getElement("categories-list").innerHTML += tableItem;
@@ -89,7 +89,7 @@ function addSong(title) {
   var id = title.toLowerCase().replace(/\ /g, "-").replace("'", "");
   song = id;
 
-  var tableItem = "<tr id='" + id + "' onclick='onSongClick(\"" + id + "\");' data-long-press-delay='600'><td ontouchstart=\"this.className='touched';\" ontouchend=\"this.className='';\" data-long-press-delay='600' class=''>" + title + "</td></tr>";
+  var tableItem = "<tr id='" + id + "' onclick='onSongClick(\"" + id + "\");' data-long-press-delay='600'><td ontouchstart=\"this.className='touched';\" ontouchend=\"this.className='';\" data-long-press-delay='600' class=''>" + title + "<div class='pointer'>></div></td></tr>";
 
   if (localStorage.getItem(artist + "-" + category).indexOf(id) < 0) {
     getElement("songs-list").innerHTML += tableItem;
@@ -111,7 +111,7 @@ function createVideoElement(id, type) {
   var videoTitle = getVideoTitle();
 
   if (videoTitle !== null) {
-    var tableItem = "<tr id='" + videoId + "' onclick='onVideoClick(\"" + videoId + "\")' data-long-press-delay='600'><td ontouchstart=\"this.className='touched';\" ontouchend=\"this.className='';\" data-long-press-delay='600' class=''>" + videoTitle + "</td></tr>";
+    var tableItem = "<tr id='" + videoId + "' onclick='onVideoClick(\"" + videoId + "\")' data-long-press-delay='600'><td ontouchstart=\"this.className='touched';\" ontouchend=\"this.className='';\" data-long-press-delay='600' class=''>" + videoTitle + "<div class='pointer'>></div></td></tr>";
     getElement(id).innerHTML += tableItem;
 
     localStorage.setItem(storage, getElement(id).innerHTML.trim());

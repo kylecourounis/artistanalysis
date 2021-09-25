@@ -33,7 +33,7 @@ function onArtistClick(name) {
   artist = name;
   storage = name + "-categories";
 
-  getElement("header-txt").innerText = getElement(name).innerText;
+  getElement("header-txt").innerText = getElement(name).innerText.replace(">", "");
   
   window.scrollTo(0, 0);
 
@@ -64,7 +64,7 @@ function onCategoryClick(name) {
   category = name;
   storage = artist + "-" + category;
 
-  getElement("header-txt").innerText = getElement(name).innerText;
+  getElement("header-txt").innerText = getElement(name).innerText.replace(">", "");
 
   window.scrollTo(0, 0);
 
