@@ -2,16 +2,16 @@ function addButtonDone() {
   getElement("loader").style.display = "block";
 
   setTimeout(function () {
-    if (getElement("artists").style.display === "block") {
+    if (checkDisplay("block", "none", "none", "none", "none")) {
       var artistName = getElement("input-artist-name").value;
       addArtist(artistName);
-    } else if (getElement("categories").style.display === "block") {
+    } else if (checkDisplay("block", "block", "none", "none", "none")) {
       var categoryName = getElement("input-category-name").value;
       addCategory(categoryName);
-    } else if (getElement("videos-div").style.display === "block") {
+    } else if (checkDisplay("block", "block", "block", "block", "none")) {
       var url = getElement("input-yt-url").value;
       getVideo(url, "videos", "song");
-    } else {
+    } else if (checkDisplay("block", "block", "block", "none", "none")) {
       var title = getElement("input-song-name").value;
       
       if (title.indexOf("youtu") <= 0) {

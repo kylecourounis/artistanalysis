@@ -5,43 +5,55 @@ function addButtonClick() {
     getElement("loader").style.display = "none";
     toggleDark();
 
-    if (getElement("artists").style.display === "block") {
+    if (checkDisplay("block", "none", "none", "none", "none")) {
       getElement("popup-container").innerHTML = getSnippet("add-artist");
-    } else if (getElement("categories").style.display === "block") {
+    } else if (checkDisplay("block", "block", "none", "none", "none")) {
       getElement("popup-container").innerHTML = getSnippet("add-category");
-    } else if (getElement("videos-div").style.display === "block" && getElement("songs-div").style.display === "none") {
+    } else if (checkDisplay("block", "block", "block", "block", "none")) {
       getElement("popup-container").innerHTML = getSnippet("add-video");
-    } else {
+    } else if (checkDisplay("block", "block", "block", "none", "none")) {
       getElement("popup-container").innerHTML = getSnippet("add-song");
     }
   }, 400);
 }
 
 function backButtonClick() {
-  if (getElement("categories").style.display === "block") {
+  if (checkDisplay("block", "block", "none", "none", "none")) {
+    slide("artists", 1);
+
     getElement("categories").style.display = "none";
+    slide("categories", 1);
+
     getElement("button-back").style.display = "none";
-
+    
     getElement("button-debug").style.display = "block";
-    getElement("artists").style.display = "block";
 
-    getElement("header-txt").innerText = "Artists";
+    getElement("header-txt").innerText = "Artists"; 
 
     storage = "artists";
-  } else if (getElement("songs-div").style.display === "block") {
+  } else if (checkDisplay("block", "block", "block", "none", "none")) {
+    slide("categories", 1);
+
     getElement("songs-div").style.display = "none";
+    slide("songs-div", 1);
+
     getElement("videos-list").style.display = "none";
     getElement("button-save").style.display = "none";
     
     getElement("button-back").style.display = "block";
     getElement("button-add").style.display = "block";
+
     getElement("categories").style.display = "block";
 
     getElement("header-txt").innerText = getElement(artist).innerText.replace(">", "");
 
     storage = artist + "-categories";
-  } else if (getElement("videos-div").style.display === "block") {
+  } else if (checkDisplay("block", "block", "block", "block", "none")) {
+    slide("songs-div", 1);
+
     getElement("videos-div").style.display = "none";
+    slide("videos-div", 1);
+
     getElement("videos-list").style.display = "none";
     getElement("button-debug").style.display = "none";
 
@@ -52,10 +64,13 @@ function backButtonClick() {
     getElement("header-txt").innerText = getElement(category).innerText.replace(">", "");
 
     storage = artist + "-" + category;
-  } else if (getElement("video-container").style.display === "block") {
+  } else if (checkDisplay("block", "block", "block", "block", "block")) {
+    slide("videos-div", 1);
+    
     getElement("video-container").innerHTML = "";
-
     getElement("video-container").style.display = "none";
+    slide("video-container", 1);
+
     getElement("button-save").style.display = "none";
 
     getElement("button-add").style.display = "block";
@@ -107,4 +122,8 @@ function glow(where) {
 
 function noGlow() {
   getElement("glow").style.display = "none";
+}
+
+function checkDisplay(artistsDiv, categoriesDiv, songsDiv, videosDiv, vidContainerDiv) {
+  return getElement("artists").style.display === artistsDiv && getElement("categories").style.display === categoriesDiv && getElement("songs-div").style.display === songsDiv && getElement("videos-div").style.display === videosDiv && getElement("video-container").style.display === vidContainerDiv;
 }

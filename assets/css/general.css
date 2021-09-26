@@ -43,6 +43,7 @@ a {
 #video-container {
   display: none;
   padding: 10px;
+  z-index: -5;
 }
 
 #notes-section {

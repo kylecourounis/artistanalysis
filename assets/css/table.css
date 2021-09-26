@@ -4,6 +4,7 @@
     margin-top: 50px;
     font-family: Helvetica, Arial; font-size: 20px;
     background-color: #f5f5f5;
+    transition: all 400ms ease 0s;
   }
   
   .custom-tbl th, .custom-tbl td {
@@ -24,7 +25,7 @@
   }
   
   .custom-tbl td .pointer {
-    position: absolute;
+    float: right;
     top: 14px; right: 13px;    
     font-family: Courier; font-size: 24px; font-weight: bold;
     color: #666;

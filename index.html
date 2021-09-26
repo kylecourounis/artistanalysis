@@ -12,7 +12,7 @@
   
   <link rel="stylesheet" type="text/css" href="assets/styles.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
-
+  
   <link rel="manifest" href="assets/manifest.webmanifest">
   <link rel="icon" sizes="96x96" href="assets/images/icon.png">
 
@@ -30,33 +30,31 @@
   <div id="darken"></div>
   
   <div id="header">
-    <div id="header">
-      <img id="button-back" src="assets/images/back.png" ontouchstart="glow('button-back');" ontouchend="noGlow();" onclick="backButtonClick()" />
-      <img id="button-debug" src="assets/images/settings.png" ontouchstart="glow('button-debug');" ontouchend="noGlow();" onclick="debugButtonClick()" />
-      <span id="header-txt">Artists</span>
-      <img id="button-add" src="assets/images/add.png" ontouchstart="glow('button-add');" ontouchend="noGlow();" onclick="addButtonClick()" />
-      <img id="button-save" src="assets/images/save.png" ontouchstart="glow('button-save');" ontouchend="noGlow();" onclick="saveButtonClick()" />
-    </div>
+    <img id="button-back" src="assets/images/back.png" ontouchstart="glow('button-back');" ontouchend="noGlow();" onclick="backButtonClick()" />
+    <img id="button-debug" src="assets/images/settings.png" ontouchstart="glow('button-debug');" ontouchend="noGlow();" onclick="debugButtonClick()" />
+    <span id="header-txt">Artists</span>
+    <img id="button-add" src="assets/images/add.png" ontouchstart="glow('button-add');" ontouchend="noGlow();" onclick="addButtonClick()" />
+    <img id="button-save" src="assets/images/save.png" ontouchstart="glow('button-save');" ontouchend="noGlow();" onclick="saveButtonClick()" />
   </div>
-  
+
   <div id="wrapper">
-    <div id="artists" style="display: block;">
+    <div id="artists" style="display: block; top: 40px; -webkit-transition:all 400ms ease; -webkit-transform: translate3d(360px, 0px, 0px);">
       <table class="custom-tbl" id="artists-list" width="100%"></table>
     </div>
 
-    <div id="categories" style="display: none;">
+    <div id="categories" style="display: none; top: 40px; -webkit-transition:all 400ms ease;">
       <table class="custom-tbl" id="categories-list" width="100%"></table>
     </div>
 
-    <div id="songs-div" style="display: none;">
+    <div id="songs-div" style="display: none; top: 40px; -webkit-transition:all 400ms ease;">
       <table class="custom-tbl" id="songs-list" width="100%"></table>
     </div>
 
-    <div id="videos-div" style="display: none;">
+    <div id="videos-div" style="display: none; top: 40px; -webkit-transition:all 400ms ease;">
       <table class="custom-tbl" id="videos-list" width="100%"></table>
     </div>
 
-    <div id="video-container" style="display: none;"></div>
+    <div id="video-container" style="display: none; top: 40px; -webkit-transition:all 400ms ease;"></div>
   </div>
 
   <script type="text/javascript" src="scripts/helpers/html.js"></script>
