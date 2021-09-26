@@ -37,7 +37,7 @@ function backButtonClick() {
     getElement("button-add").style.display = "block";
     getElement("categories").style.display = "block";
 
-    getElement("header-txt").innerText = getElement(artist).innerText;
+    getElement("header-txt").innerText = getElement(artist).innerText.replace(">", "");
 
     storage = artist + "-categories";
   } else if (getElement("videos-div").style.display === "block") {
@@ -49,7 +49,7 @@ function backButtonClick() {
     getElement("songs-div").style.display = "block";
     getElement("songs-list").style.display = "inline-table";
 
-    getElement("header-txt").innerText = getElement(category).innerText;
+    getElement("header-txt").innerText = getElement(category).innerText.replace(">", "");
 
     storage = artist + "-" + category;
   } else if (getElement("video-container").style.display === "block") {

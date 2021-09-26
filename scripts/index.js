@@ -197,6 +197,5 @@ function addEvent(t, s) {
     tableItem.children[0].className = "";
 
     getElement("popup-container").innerHTML = getSnippet("confirm-delete");
-
   });
 }
