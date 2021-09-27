@@ -37,6 +37,9 @@ function onArtistClick(name) {
 
   getElement("header-txt").innerText = getElement(name).innerText.replace(">", "");
   
+  storedScrollX = window.scrollX;
+  storedScrollY = window.scrollY;
+  
   window.scrollTo(0, 0);
 
   getElement("loader").style.display = "block";
@@ -70,6 +73,9 @@ function onCategoryClick(name) {
 
   getElement("header-txt").innerText = getElement(name).innerText.replace(">", "");
 
+  storedScrollX = window.scrollX;
+  storedScrollY = window.scrollY;
+  
   window.scrollTo(0, 0);
 
   getElement("loader").style.display = "block";
@@ -102,6 +108,9 @@ function onSongClick(name) {
 
   getElement("header-txt").innerText = "Videos";
 
+  storedScrollX = window.scrollX;
+  storedScrollY = window.scrollY;
+
   window.scrollTo(0, 0);
 
   getElement("loader").style.display = "block";
@@ -131,7 +140,12 @@ function onSongClick(name) {
 
 function onVideoClick(id) {
   videoId = id;
-  
+
+  getElement("header-txt").innerText = "Video";
+
+  storedScrollX = window.scrollX;
+  storedScrollY = window.scrollY;
+
   window.scrollTo(0, 0);
 
   getElement("loader").style.display = "block";
