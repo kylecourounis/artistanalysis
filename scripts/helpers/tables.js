@@ -29,6 +29,8 @@ function addButtonDone() {
             videoId = playlist[i];
             createVideoElement("videos-list", "song");
           }
+
+          getElement("videos-list").innerHTML = "";
         } else if (title.indexOf("?v=") >= 0) {
           getVideo(title, "songs", "category");
         } else {
@@ -64,6 +66,7 @@ function addArtist(name) {
     addEvent(getElement(id), "artists");
   } else {
     alert("An artist with that ID already exists");
+    return;
   }
 } 
 
@@ -88,6 +91,7 @@ function addCategory(name) {
     addEvent(getElement(id), artist + "-categories");
   } else {
     alert("A category with that ID already exists");
+    return;
   }
 } 
 
@@ -113,6 +117,7 @@ function addSong(title) {
     addEvent(getElement(id), artist + "-" + category);
   } else {
     alert("A song with that ID already exists");
+    return;
   }
 } 
 
