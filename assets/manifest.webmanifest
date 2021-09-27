@@ -1,6 +1,6 @@
 {
-    "short_name": "SongAnalysis",
-    "name": "Song Analysis",
+    "short_name": "Artist Analysis",
+    "name": "Artist Analysis",
     "description": "",
     "start_url": "../index.html",
     "display": "standalone",
