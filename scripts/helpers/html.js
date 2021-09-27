@@ -15,6 +15,7 @@ function getSnippet(name) {
       type: 'get',
       dataType: 'html',
       async: false,
+      cache: false,
       success: function (data) {
           result = data;
       }
