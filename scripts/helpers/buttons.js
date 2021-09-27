@@ -55,6 +55,8 @@ function backButtonClick() {
     slide("videos-div", 1);
 
     getElement("videos-list").style.display = "none";
+    getElement("videos-list").innerHTML = "";
+
     getElement("button-debug").style.display = "none";
 
     getElement("button-back").style.display = "block";

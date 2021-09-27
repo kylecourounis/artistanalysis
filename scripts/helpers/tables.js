@@ -44,6 +44,11 @@ function addButtonDone() {
 }
 
 function addArtist(name) {
+  if (name === "" || name === null) {
+    alert("You did not enter a name for the new artist!");
+    return;
+  }
+
   if (localStorage.getItem("artists") === null) {
     localStorage.setItem("artists", "");
   }
@@ -63,6 +68,11 @@ function addArtist(name) {
 } 
 
 function addCategory(name) {
+  if (name === "" || name === null) {
+    alert("You did not enter a name for the new category!");
+    return;
+  }
+
   if (localStorage.getItem(artist + "-categories") === null) {
     localStorage.setItem(artist + "-categories", "");
   }
@@ -82,6 +92,11 @@ function addCategory(name) {
 } 
 
 function addSong(title) {
+  if (title === "" || title === null) {
+    alert("You did not enter a title or YouTube Playlist URL!");
+    return;
+  }
+
   if (localStorage.getItem(artist + "-" + category) === null) {
     localStorage.setItem(artist + "-" + category, "");
   }
