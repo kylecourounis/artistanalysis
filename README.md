@@ -5,4 +5,4 @@ This project also served as an experiment in using seperate HTML files and then 
 
 I used the YouTube API to import playlists and I borrowed and recolored some of the assets from an old, unmaintained program by Hottrix called App.Cat.
 
-You can test out the web application [here](https://kylecourounis.github.io/songanalysis).
+You can test out the web application [here](https://kylecourounis.github.io/artistanalysis).
