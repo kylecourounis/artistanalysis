@@ -49,3 +49,29 @@ function toggleDark() {
 
   return darken.style.display === "block";
 }
+
+function buildHTML(type, json) {
+  getElement(type + "-list").innerHTML = "";
+
+  if (type === "artists") {
+    for (var element in json) {
+      addArtist(json[element]);
+    }
+  }
+  if (type === "categories") {
+    for (var element in json) {
+      addCategory(json[element]);
+    }
+  }
+  if (type === "songs") {
+    for (var element in json) {
+      addSong(json[element]);
+    }
+  }
+  if (type === "videos") {
+    for (var element in json) {
+      videoId = element;
+      createVideoElement("videos-list", json[element], "song");
+    }
+  }
+}

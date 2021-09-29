@@ -77,6 +77,8 @@ function backButtonClick() {
     storage = artist + "-" + category;
   } else if (checkDisplay("block", "block", "block", "block", "block")) {
     slide("videos-div", 1);
+
+    document.getElementsByTagName("body")[0].style.overflowY = "auto";
     
     getElement("video-container").innerHTML = "";
     getElement("video-container").style.display = "none";
@@ -112,8 +114,27 @@ function saveButtonClick() {
   setTimeout(function () {
     getElement("loader").style.display = "none";
     
+    var notesStorage = localStorage.getItem("notes");
+
+    if (notesStorage === null) {
+      localStorage.setItem("notes", "{}");
+    }
+
     var notes = getElement("notes-section").value;
-    localStorage.setItem(videoId + "-notes", notes);
+
+    var json = JSON.parse(notesStorage);
+    var jsonStr;
+
+    if (json[videoId]) {
+      json[videoId] = notes;
+      jsonStr = JSON.stringify(json);
+    } else if (notesStorage == "{}") {
+      jsonStr = notesStorage.substring(0, notesStorage.length - 1) + ("\"" + videoId + "\":" + " \"" + notes + "\"") + "}";
+    } else {
+      jsonStr = notesStorage.substring(0, notesStorage.length - 1) + "," + ("\"" + videoId + "\":" + " \"" + notes + "\"") + "}";
+    }
+    
+    localStorage.setItem("notes", jsonStr);
   }, 400);
 }
 

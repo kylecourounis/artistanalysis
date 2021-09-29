@@ -26,7 +26,7 @@ $(document).ready(function () {
   }, { passive: true });
 
   if (localStorage.getItem("artists") !== null) {
-    getElement("artists-list").innerHTML += localStorage.getItem("artists");
+    buildHTML("artists", JSON.parse(localStorage.getItem("artists")));
     addEvents();
   }
 });
@@ -58,9 +58,8 @@ function onArtistClick(name) {
     
     if (localStorage.getItem(artist + "-categories") === null) {
       setHTML("#categories-list", "");
-      localStorage.setItem(artist + "-categories", "");
     } else {
-      setHTML("#categories-list", localStorage.getItem(artist + "-categories"));
+      buildHTML("categories", JSON.parse(localStorage.getItem(artist + "-categories")));
     }
 
     addEvents();
@@ -93,9 +92,8 @@ function onCategoryClick(name) {
     
     if (localStorage.getItem(storage) === null) {
       setHTML("#songs-list", "");
-      localStorage.setItem(storage, "");
     } else {
-      setHTML("#songs-list", localStorage.getItem(storage));
+      buildHTML("songs", JSON.parse(localStorage.getItem(storage)));
     }
 
     addEvents();
@@ -129,9 +127,8 @@ function onSongClick(name) {
     
     if (localStorage.getItem(storage) === null) {
       setHTML("#videos-list", '<table class="custom-tbl" id="videos-list" width="100%"></table>');
-      localStorage.setItem(storage, "");
     } else {
-      setHTML("#videos-list", localStorage.getItem(storage));
+      buildHTML("videos", JSON.parse(localStorage.getItem(storage)));
     }
     
     addEvents();
@@ -163,13 +160,18 @@ function onVideoClick(id) {
     
     getElement("video-container").style.display = "block";
 
-    if (localStorage.getItem(id + "-notes") === "null" || localStorage.getItem(id + "-notes") === null ) {
-      localStorage.setItem(id + "-notes", "");
+    var notesStorage = localStorage.getItem("notes");
+
+    if (notesStorage === null) {
+      localStorage.setItem("notes", "{}");
     }
 
-    var notes = localStorage.getItem(id + "-notes");
+    var json = JSON.parse(notesStorage);
+
+    var notes = (json[videoId]) ? json[videoId] : "";
 
     getElement("video-container").innerHTML = "<br/><br/></br><iframe width=\'100%\' height=\'315\' src='https\:/\/www.youtube.com/embed/" + id + "/frameborder=\'0\' allow=\'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\' allowfullscreen></iframe><br /><br/><center><textarea id='notes-section' rows='10' cols='53'>" + notes + "</textarea>";
+    document.getElementsByTagName("body")[0].style.overflowY = "hidden";
 
     addVideoEvents();
   }, 500);

@@ -11,10 +11,10 @@ function getVideo(url, div, type) {
     }
     
     videoId = url.substr(url.indexOf("v=") + 2);
-    createVideoElement(div + "-list", type);
+    createVideoElement(div + "-list", getVideoTitle(), type);
   } else if (url.indexOf("youtu.be") >= 0) {
     videoId = url.substr(url.indexOf("/") + 1);
-    createVideoElement(div + "-list", type);
+    createVideoElement(div + "-list", getVideoTitle(), type);
   } else {
     alert("Invalid YouTube URL!");
     url = null;      
