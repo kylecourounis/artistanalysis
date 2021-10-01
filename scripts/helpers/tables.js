@@ -227,8 +227,6 @@ function saveVideo(title) {
 function deleteTableItem() {
   var type;
 
-  console.log(storage);
-
   if (storage === "artists") {
     type = "artists";
     localStorage.removeItem(artist + "-categories");
@@ -238,8 +236,11 @@ function deleteTableItem() {
   } else if (storage.endsWith("-songs")) {
     type = "songs";
     localStorage.removeItem(artist + "-" + tableItem.id);
-  } else if (storage.endsWith(tableItem.id)) {
+  } else if (storage.endsWith(song)) {
     type = "videos";
+
+    var notes = JSON.parse(localStorage.getItem("notes"));
+    delete notes[tableItem.id];
   }
 
   var json = JSON.parse(localStorage.getItem(storage));

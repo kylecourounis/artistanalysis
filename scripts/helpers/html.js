@@ -17,7 +17,7 @@ function getSnippet(name) {
       async: false,
       cache: false,
       success: function (data) {
-          result = data;
+        result = data;
       }
   });
 
@@ -42,9 +42,11 @@ function toggleDark() {
   if (darken.style.display === "block") {
     getElement("darken").style.display = "none";
     getElement("header").style.zIndex = 2;
+    document.getElementsByTagName("body")[0].style.overflow = "";
   } else {
     getElement("header").style.zIndex = -1;  
     getElement("darken").style.display = "block";
+    document.getElementsByTagName("body")[0].style.overflow = "hidden";
   }
 
   return darken.style.display === "block";
