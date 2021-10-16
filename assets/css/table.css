@@ -10,7 +10,7 @@
 .custom-tbl th, .custom-tbl td {
   padding: 15px;
   border-bottom: 1px solid #ddd;
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ccc), to(#999));
+  background: linear-gradient(#ccc, #999);
   text-align: left;
   font-family: Helvetica; font-size: 20px;
 }
@@ -23,7 +23,7 @@
 .custom-tbl tr .touched {
   padding: 15px;
   border-bottom: 1px solid #ddd;
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#09F), to(#06F));
+  background: linear-gradient(#09F, #06F);
   text-align: left;
   font-family: Helvetica; font-size: 20px;
   cursor: pointer;

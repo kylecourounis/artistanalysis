@@ -3,6 +3,8 @@ body {
   padding: 0;
   overscroll-behavior-y: none;
   background-color: #999;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 a {
