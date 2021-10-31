@@ -2,6 +2,10 @@ var storedScrollX;
 var storedScrollY;
 
 function addButtonClick() {
+  if (!isMobile()) {
+    glowOnClick("button-add");
+  }
+
   getElement("loader").style.display = "block";
 
   setTimeout(function () {
@@ -21,6 +25,10 @@ function addButtonClick() {
 }
 
 function backButtonClick() {
+  if (!isMobile()) {
+    glowOnClick("button-back");
+  }
+
   if (checkDisplay("block", "block", "none", "none", "none")) {
     slide("artists", 1);
 
@@ -99,6 +107,10 @@ function backButtonClick() {
 }
 
 function debugButtonClick() {
+  if (!isMobile()) {
+    glowOnClick("button-debug");
+  }
+
   getElement("loader").style.display = "block";
 
   setTimeout(function () {
@@ -109,6 +121,10 @@ function debugButtonClick() {
 }
 
 function saveButtonClick() {
+  if (!isMobile()) {
+    glowOnClick("button-save");
+  }
+
   getElement("loader").style.display = "block";
 
   setTimeout(function () {
@@ -139,9 +155,47 @@ function saveButtonClick() {
 }
 
 function closePopup() {
+  if (isMobile()) {
+    clearPopup();
+  } else {
+    setTimeout(function () {
+      clearPopup();
+    }, 100);
+  }
+}
+
+function clearPopup() {
   getElement("popup-container").innerHTML = "";
   getElement("loader").style.display = "none";
   toggleDark();
+}
+
+function tableItemClicked(element) {
+  if (!isMobile()) {
+    element.className = "touched";
+
+    setTimeout(function () {
+      element.className = "";
+    }, 100);
+  }
+}
+
+function lightupOnClick(id) {
+  if (!isMobile()) {
+    getElement(id).className = "popup-button-over";
+
+    setTimeout(function () {
+      getElement(id).className = "popup-button";
+    }, 100);
+  }
+}
+
+function glowOnClick(where) {
+  glow(where);
+
+  setTimeout(function () {
+    noGlow();
+  }, 100);
 }
 
 function glow(where) {

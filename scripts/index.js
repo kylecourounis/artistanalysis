@@ -31,6 +31,10 @@ $(document).ready(function () {
   }
 });
 
+function isMobile() {
+  return window.matchMedia("(pointer:coarse)").matches;
+}
+
 function onArtistClick(name) {
   artist = name;
   storage = name + "-categories";

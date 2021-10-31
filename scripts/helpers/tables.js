@@ -71,7 +71,7 @@ function addArtist(name) {
 
   var id = name.toLowerCase().replace(/\ /g, "-").replace("'", "");
 
-  var tableItem = "<tr id='" + id + "' onclick='onArtistClick(\"" + id + "\");' data-long-press-delay='300'><td ontouchstart=\"this.className='touched';\" ontouchend=\"this.className='';\" data-long-press-delay='600' class=''><div id='text'>" + name + "</div><div class='pointer'>></div></td></tr>";
+  var tableItem = "<tr id='" + id + "' onclick='onArtistClick(\"" + id + "\");' data-long-press-delay='300'><td onclick='tableItemClicked(this)' ontouchstart=\"this.className='touched';\" ontouchend=\"this.className='';\" data-long-press-delay='600' class=''><div id='text'>" + name + "</div><div class='pointer'>></div></td></tr>";
 
   if (document.getElementById(id) === null) {
     getElement("artists-list").innerHTML += tableItem;
@@ -112,7 +112,7 @@ function addCategory(name) {
 
   var id = name.toLowerCase().replace(/\ /g, "-").replace("'", "");
 
-  var tableItem = "<tr id='" + id + "' onclick='onCategoryClick(\"" + id + "\");' data-long-press-delay='300'><td ontouchstart=\"this.className='touched';\" ontouchend=\"this.className='';\" data-long-press-delay='600' class=''><div id='text'>" + name + "</div><div class='pointer'>></div></td></tr>";
+  var tableItem = "<tr id='" + id + "' onclick='onCategoryClick(\"" + id + "\");' data-long-press-delay='300'><td onclick='tableItemClicked(this)' ontouchstart=\"this.className='touched';\" ontouchend=\"this.className='';\" data-long-press-delay='600' class=''><div id='text'>" + name + "</div><div class='pointer'>></div></td></tr>";
   
   if (document.getElementById(id) === null) {
     getElement("categories-list").innerHTML += tableItem;
@@ -154,7 +154,7 @@ function addSong(title) {
   var id = title.toLowerCase().replace(/\ /g, "-").replace("'", "");
   song = id;
 
-  var tableItem = "<tr id='" + id + "' onclick='onSongClick(\"" + id + "\");' data-long-press-delay='300'><td ontouchstart=\"this.className='touched';\" ontouchend=\"this.className='';\" data-long-press-delay='600' class=''><div id='text'>" + title + "</div><div class='pointer'>></div></td></tr>";
+  var tableItem = "<tr id='" + id + "' onclick='onSongClick(\"" + id + "\");' data-long-press-delay='300'><td onclick='tableItemClicked(this)' ontouchstart=\"this.className='touched';\" ontouchend=\"this.className='';\" data-long-press-delay='600' class=''><div id='text'>" + title + "</div><div class='pointer'>></div></td></tr>";
   
   if (document.getElementById(id) === null) {
     getElement("songs-list").innerHTML += tableItem;
@@ -197,7 +197,7 @@ function createVideoElement(id, videoTitle, type) {
   if (document.getElementById(videoId) === null) {
     saveVideo(videoTitle, storage);
     
-    var tableItem = "<tr id='" + videoId + "' onclick='onVideoClick(\"" + videoId + "\")' data-long-press-delay='300'><td ontouchstart=\"this.className='touched';\" ontouchend=\"this.className='';\" data-long-press-delay='600' class=''><div id='text'>" + videoTitle + "</div><div class='pointer'>></div></td></tr>";
+    var tableItem = "<tr id='" + videoId + "' onclick='onVideoClick(\"" + videoId + "\")' data-long-press-delay='300'><td onclick='tableItemClicked(this)' ontouchstart=\"this.className='touched';\" ontouchend=\"this.className='';\" data-long-press-delay='600' class=''><div id='text'>" + videoTitle + "</div><div class='pointer'>></div></td></tr>";
     getElement(id).innerHTML += tableItem;
 
     addEvent(getElement(videoId), storage);
